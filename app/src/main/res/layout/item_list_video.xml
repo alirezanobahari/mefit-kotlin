@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="120dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_video_item"
+    android:layoutDirection="rtl">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgVideoThumbnail"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_corner_radius_bottom_left="0dp"
+        app:riv_corner_radius_bottom_right="0dp"
+        app:riv_corner_radius_top_left="4dp"
+        app:riv_corner_radius_top_right="4dp"
+        tools:src="@tools:sample/backgrounds/scenic" />
+
+    <ImageView
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:tint="@color/colorTextLight"
+        app:layout_constraintBottom_toBottomOf="@+id/imgVideoThumbnail"
+        app:layout_constraintEnd_toEndOf="@+id/imgVideoThumbnail"
+        app:layout_constraintStart_toStartOf="@+id/imgVideoThumbnail"
+        app:layout_constraintTop_toTopOf="@+id/imgVideoThumbnail"
+        app:srcCompat="@drawable/ic_play"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvVideoTitle"
+        style="@style/TextAppearance.Light"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgVideoThumbnail" />
+
+    <TextView
+        android:id="@+id/tvVideoDuration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Light.Light"
+        android:textDirection="rtl"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvLikeCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+
+    <CheckBox
+        android:id="@+id/cbLike"
+        style="@style/LikeCheckBox"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:enabled="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/tvLikeCount"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Light.Light"
+        android:textDirection="ltr"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="@+id/cbLike"
+        app:layout_constraintEnd_toStartOf="@+id/cbLike"
+        app:layout_constraintStart_toEndOf="@+id/tvVideoDuration"
+        app:layout_constraintTop_toTopOf="@+id/cbLike" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

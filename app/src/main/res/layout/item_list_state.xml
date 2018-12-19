@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/clListStateContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    tools:background="@color/colorAccent">
+
+    <ImageView
+        android:id="@+id/imgListState"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:tint="@color/colorTextLight"
+        app:layout_constraintBottom_toTopOf="@+id/tvTitleListState"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:ignore="ContentDescription"
+        tools:srcCompat="@drawable/ic_magnifier_not_found" />
+
+    <TextView
+        android:id="@+id/tvTitleListState"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextAppearance.Light"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgListState"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="@string/msg_no_video_found" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

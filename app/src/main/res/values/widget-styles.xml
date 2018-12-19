@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="NavigationTabStyle" parent="Widget.Design.TabLayout">
+        <item name="tabBackground">@drawable/selector_navigation_tab</item>
+        <item name="tabIndicatorHeight">0dp</item>
+    </style>
+
+    <style name="LikeCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/selector_check_box_like</item>
+    </style>
+
+    <style name="FullscreenCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/selector_check_box_fullscreen</item>
+    </style>
+
+    <style name="VideoQualityCheckBox" parent="Widget.AppCompat.CompoundButton.CheckBox">
+        <item name="android:button">@null</item>
+        <item name="android:background">@drawable/selector_check_box_video_quality</item>
+    </style>
+
+    <style name="SquareImageButton" parent="Widget.AppCompat.ImageButton">
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:scaleType">fitCenter</item>
+    </style>
+
+    <style name="SquareImageButton.Light" parent="SquareImageButton">
+        <item name="android:tint">@android:color/white</item>
+    </style>
+
+    <style name="SquareImageButton.Dark" parent="SquareImageButton">
+        <item name="android:tint">@color/colorDimGray</item>
+    </style>
+
+</resources>

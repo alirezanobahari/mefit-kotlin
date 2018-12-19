@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Mefit</string>
+
+    <!--Commons-->
+    <string name="msg_no_video_found">ویدیوای پیدا نشد!</string>
+
+    <!--HomeFragment-->
+    <string name="action_more">بیشتر</string>
+
+</resources>

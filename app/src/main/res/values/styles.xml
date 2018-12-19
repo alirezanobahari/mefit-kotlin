@@ -1,0 +1,54 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <!--TextAppearance-->
+    <style name="TextAppearance.Light" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/iran_sans_mobile</item>
+        <item name="android:textColor">@color/colorTextLight</item>
+    </style>
+
+    <style name="TextAppearance.Dark" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/iran_sans_mobile</item>
+        <item name="android:textColor">@color/colorTextDark</item>
+    </style>
+
+    <style name="TextAppearance.Light.UltraLight" parent="TextAppearance.Light">
+        <item name="android:fontFamily">@font/iran_sans_mobile_ultra_light</item>
+    </style>
+
+    <style name="TextAppearance.Light.Light" parent="TextAppearance.Light">
+        <item name="android:fontFamily">@font/iran_sans_mobile_light</item>
+    </style>
+
+    <style name="TextAppearance.Light.Medium" parent="TextAppearance.Light">
+        <item name="android:fontFamily">@font/iran_sans_mobile_medium</item>
+    </style>
+
+    <style name="TextAppearance.Light.Bold" parent="TextAppearance.Light">
+        <item name="android:fontFamily">@font/iran_sans_mobile_bold</item>
+    </style>
+
+    <style name="TextAppearance.Dark.UltraLight" parent="TextAppearance.Dark">
+        <item name="android:fontFamily">@font/iran_sans_mobile_ultra_light</item>
+    </style>
+
+    <style name="TextAppearance.Dark.Light" parent="TextAppearance.Dark">
+        <item name="android:fontFamily">@font/iran_sans_mobile_light</item>
+    </style>
+
+    <style name="TextAppearance.Dark.Medium" parent="TextAppearance.Dark">
+        <item name="android:fontFamily">@font/iran_sans_mobile_medium</item>
+    </style>
+
+    <style name="TextAppearance.Dark.Bold" parent="TextAppearance.Dark">
+        <item name="android:fontFamily">@font/iran_sans_mobile_bold</item>
+    </style>
+
+</resources>

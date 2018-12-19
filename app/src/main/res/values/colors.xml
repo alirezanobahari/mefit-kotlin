@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/colorYellowGreen</color>
+    <color name="colorPrimaryDark">@color/colorDarkYellowGreen</color>
+    <color name="colorAccent">@color/colorDimGray</color>
+
+    <color name="colorTextLight">@android:color/white</color>
+    <color name="colorTextDark">@color/colorDimGray</color>
+
+    <!--Color Palette-->
+    <color name="colorYellowGreen">#cddc39</color>
+    <color name="colorDarkYellowGreen">#929c2c</color>
+
+    <color name="colorDarkGray">#798086</color>
+    <color name="colorDimGray">#3e454b</color>
+
+    <!--Overlay Color Palette-->
+    <color name="colorDarkGreyOverlay">#92121212</color>
+
+</resources>
