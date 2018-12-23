@@ -39,4 +39,13 @@
         <item name="android:tint">@color/colorDimGray</item>
     </style>
 
+    <style name="FrameEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/selector_frame_edit_text</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:textColorHint">@color/colorTextHint</item>
+    </style>
+
 </resources>

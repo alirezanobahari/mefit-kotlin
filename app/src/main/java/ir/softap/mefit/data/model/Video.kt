@@ -1,7 +1,9 @@
 package ir.softap.mefit.data.model
 
 import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import com.google.gson.annotations.SerializedName
+import ir.softap.mefit.data.network.BASE_URL
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -22,11 +24,11 @@ data class Video(
     data class VideoDetail(
         val url: Url,
         @SerializedName("comments_count") val commentsCount: Int,
-        @SerializedName("desc") val descriptions: List<Description>,
+        @SerializedName("desc") val descriptions: List<Description>?,
         val category: Category,
         val like: Like,
         val rate: Rate,
-        @SerializedName("premium_desc") val premiumDescription: PremiumDescription
+        @SerializedName("premium_desc") val premiumDescription: PremiumDescription?
     ) : Parcelable {
 
         @Parcelize
@@ -52,7 +54,7 @@ data class Video(
         @Parcelize
         data class PremiumDescription(
             @SerializedName("is_present") val isPresent: Boolean,
-            @SerializedName("content") val descriptions: List<Description>
+            @SerializedName("content") val descriptions: List<Description>?
         ) : Parcelable
 
     }
@@ -82,5 +84,14 @@ data class Video(
         val average: Int,
         val total: Int
     ) : Parcelable
+
+}
+
+val VIDEO_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Video>() {
+    override fun areItemsTheSame(oldItem: Video, newItem: Video): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Video, newItem: Video): Boolean =
+        oldItem == newItem
 
 }

@@ -14,4 +14,6 @@ abstract class DaggerXFragmentActivity : DaggerXActivity(), HasSupportFragmentIn
     override fun supportFragmentInjector(): AndroidInjector<Fragment> =
             fragmentDispatchingAndroidInjector
 
+
+
 }

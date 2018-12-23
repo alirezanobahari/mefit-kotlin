@@ -1,10 +1,25 @@
 <resources>
     <string name="app_name">Mefit</string>
+    <string name="app_name_fa">میـفـیت</string>
 
     <!--Commons-->
-    <string name="msg_no_video_found">ویدیوای پیدا نشد!</string>
+    <string name="msg_no_video_found">ویدیوای یافت نشد!</string>
+    <string name="msg_nothing_found">چیزی یافت نشد!</string>
+    <string name="action_retry">تلاش مجدد!</string>
+    <string name="msg_error_occurred">خطایی رخ داده است!</string>
 
     <!--HomeFragment-->
     <string name="action_more">بیشتر</string>
+
+    <!--CategoryListFragment-->
+    <string name="title_category_list">دسـته‌بـندی‌ها</string>
+    <string name="msg_not_category_found">هیچ دسته‌بندی یافت نشد!‌</string>
+
+    <!--SearchFragment-->
+    <string name="hint_search">جستــجو…</string>
+
+    <!--VideoDetailFragment-->
+    <string name="title_premium_description">توضیحات اختصاصی</string>
+    <string name="msg_this_video_has_premium_description">این ویدیو شامل توضیحات اختصاصی می‌باشد!</string>
 
 </resources>

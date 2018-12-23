@@ -1,4 +1,5 @@
 package ir.softap.mefit.ui.abstraction
+
 import android.content.Intent
 import android.content.pm.ActivityInfo
 import android.os.Bundle
@@ -17,8 +18,14 @@ abstract class BaseActivity : AppCompatActivity() {
 
     var enableDismissKeyboard = true
 
+    abstract val layoutRes: Int
+
+    abstract val initViews: (Bundle?) -> Unit
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(layoutRes)
+        initViews(savedInstanceState)
         initOrientation()
         onRelease {
             globalExceptionHandler()
@@ -65,7 +72,8 @@ abstract class BaseActivity : AppCompatActivity() {
             val y = event.rawY + w.top - scrcoords[1]
 
             if (event.action == MotionEvent.ACTION_UP && (x < w.left || x >= w.right
-                            || y < w.top || y > w.bottom)) {
+                        || y < w.top || y > w.bottom)
+            ) {
                 hideSoftKeyboard()
             }
         }

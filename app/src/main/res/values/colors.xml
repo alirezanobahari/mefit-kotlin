@@ -6,10 +6,14 @@
 
     <color name="colorTextLight">@android:color/white</color>
     <color name="colorTextDark">@color/colorDimGray</color>
+    <color name="colorTextHint">@color/colorWhiteDark</color>
+    <color name="colorRipple">#3bffffff</color>
 
     <!--Color Palette-->
     <color name="colorYellowGreen">#cddc39</color>
     <color name="colorDarkYellowGreen">#929c2c</color>
+
+    <color name="colorWhiteDark">#c2c2c2</color>
 
     <color name="colorDarkGray">#798086</color>
     <color name="colorDimGray">#3e454b</color>

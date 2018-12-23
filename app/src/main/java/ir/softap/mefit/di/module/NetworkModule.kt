@@ -1,28 +1,26 @@
 package ir.softap.mefit.di.module
 
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.LongSerializationPolicy
 import dagger.Module
 import dagger.Provides
+import ir.softap.mefit.data.network.BASE_URL
 import ir.softap.mefit.data.network.EnumRetrofitConverterFactory
 import ir.softap.mefit.di.scope.ApplicationScope
-import kotlinx.coroutines.Dispatchers
+import ir.softap.mefit.utilities.onDebug
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import kotlin.coroutines.CoroutineContext
 
 
 @Module
 // Safe here as we are dealing with a Dagger 2 module
 @Suppress("unused")
 class NetworkModule {
-
-    @ApplicationScope
-    @Provides
-    fun coroutineContextProvider(): CoroutineContext = Dispatchers.IO
 
     /**
      * Provides the Retrofit object.
@@ -36,9 +34,10 @@ class NetworkModule {
         enumRetrofitConverterFactory: EnumRetrofitConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://jsonplaceholder.typicode.com/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
             .addConverterFactory(enumRetrofitConverterFactory)
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
             .build()
     }
@@ -53,6 +52,7 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()
+            .apply { onDebug { addNetworkInterceptor(StethoInterceptor()) } }
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
         return okHttpClientBuilder.build()
