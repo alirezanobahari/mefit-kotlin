@@ -5,3 +5,6 @@ const val AUTH = "Authorization"
 const val CAT_SLUG = "sport"
 
 const val BASE_URL = "http://softap.ir/"
+const val BASE_HOST = "softap.ir"
+
+const val RPG_HOST = "vas.rpg.ir"

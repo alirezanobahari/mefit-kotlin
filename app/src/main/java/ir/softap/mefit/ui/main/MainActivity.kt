@@ -62,5 +62,4 @@ class MainActivity : DaggerXFragmentActivity() {
         }
 
     }
-
 }

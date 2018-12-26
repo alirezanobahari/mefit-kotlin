@@ -9,6 +9,8 @@ import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
 import ir.softap.mefit.di.DaggerAppComponent
 import ir.softap.mefit.ui.common.core.LocaleManager
+import ir.softap.mefit.utilities.extensions.stringArrays
+import net.jhoobin.jhub.CharkhoneSdkApp
 import javax.inject.Inject
 
 class Mefit : Application(), HasActivityInjector {
@@ -18,6 +20,7 @@ class Mefit : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        initInAppPurchaseSdk()
         initLocaleChanger()
         initDagger()
         initStetho()
@@ -28,6 +31,10 @@ class Mefit : Application(), HasActivityInjector {
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         LocaleManager.get().onConfigurationChanged()
+    }
+
+    private fun initInAppPurchaseSdk() {
+        CharkhoneSdkApp.initSdk(this, stringArrays[R.array.secrets])
     }
 
     private fun initLocaleChanger() {

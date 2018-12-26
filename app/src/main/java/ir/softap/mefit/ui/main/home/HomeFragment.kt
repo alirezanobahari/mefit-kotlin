@@ -1,5 +1,6 @@
 package ir.softap.mefit.ui.main.home
 
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -11,7 +12,7 @@ import ir.softap.mefit.ui.common.decoration.EqualSpacingItemDecoration
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
 import ir.softap.mefit.utilities.extensions.toPx
-import kotlinx.android.synthetic.main.fragment_home.view.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class HomeFragment : DaggerXFragment() {
 
@@ -21,9 +22,9 @@ class HomeFragment : DaggerXFragment() {
 
     override val layoutRes: Int = R.layout.fragment_home
 
-    override val initViews: View.() -> Unit = {
+    override val initViews: (View, Bundle?) -> Unit = { _, _ ->
 
-        srlHome.setColorSchemeColors(context.colors[R.color.colorPrimary])
+        srlHome.setColorSchemeColors(context!!.colors[R.color.colorPrimary])
         srlHome.setOnRefreshListener { homeViewModel.fetchHome() }
 
         val homeAdapter = HomeAdapter(this@HomeFragment,
@@ -47,8 +48,8 @@ class HomeFragment : DaggerXFragment() {
                 if (!handled) {
                     when (this) {
                         is HomeViewEvent.ErrorViewEvent -> ToastBuilder.showError(
-                            context,
-                            context.strings[this.message]
+                            context!!,
+                            context!!.strings[this.message]
                         )
                     }
                 }

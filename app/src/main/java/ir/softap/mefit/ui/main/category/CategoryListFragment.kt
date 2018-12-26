@@ -1,5 +1,6 @@
 package ir.softap.mefit.ui.main.category
 
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
@@ -7,11 +8,11 @@ import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ToastBuilder
-import ir.softap.mefit.ui.common.decoration.EqualSpacingItemDecoration
+import ir.softap.mefit.ui.common.decoration.GridSpacingItemDecoration
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
 import ir.softap.mefit.utilities.extensions.toPx
-import kotlinx.android.synthetic.main.fragment_category_list.view.*
+import kotlinx.android.synthetic.main.fragment_category_list.*
 
 class CategoryListFragment : DaggerXFragment() {
 
@@ -21,9 +22,9 @@ class CategoryListFragment : DaggerXFragment() {
 
     override val layoutRes: Int = R.layout.fragment_category_list
 
-    override val initViews: View.() -> Unit = {
+    override val initViews: (View, Bundle?) -> Unit = { _, _ ->
 
-        srlCategory.setColorSchemeColors(context.colors[R.color.colorPrimary])
+        srlCategory.setColorSchemeColors(context!!.colors[R.color.colorPrimary])
         srlCategory.setOnRefreshListener { categoryListViewModel.fetchCategoryList() }
 
         val categoryAdapter = CategoryAdapter(this@CategoryListFragment,
@@ -32,7 +33,7 @@ class CategoryListFragment : DaggerXFragment() {
 
             })
         lstCategory.layoutManager = GridLayoutManager(context, 2)
-        lstCategory.addItemDecoration(EqualSpacingItemDecoration(16.toPx, EqualSpacingItemDecoration.GRID, true))
+        lstCategory.addItemDecoration(GridSpacingItemDecoration(2, 8.toPx, false))
         lstCategory.adapter = categoryAdapter
 
         categoryListViewModel.observeState(this@CategoryListFragment) { categoryListViewModel ->
@@ -48,8 +49,8 @@ class CategoryListFragment : DaggerXFragment() {
                 if (!handled) {
                     when (this) {
                         is CategoryListViewEvent.ErrorViewEvent -> ToastBuilder.showError(
-                            context,
-                            context.strings[this.message]
+                            context!!,
+                            context!!.strings[this.message]
                         )
                     }
                 }

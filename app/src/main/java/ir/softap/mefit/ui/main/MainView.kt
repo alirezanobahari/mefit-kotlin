@@ -28,5 +28,4 @@ class MainViewModel @Inject constructor() : StateViewModel<MainViewState>() {
         updateState { it.copy(mainNavigation = mainNavigation) }
     }
 
-
 }

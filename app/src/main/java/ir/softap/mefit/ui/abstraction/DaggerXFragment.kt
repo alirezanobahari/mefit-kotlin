@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.LayoutRes
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import dagger.android.support.AndroidSupportInjection
@@ -14,7 +13,7 @@ abstract class DaggerXFragment : Fragment() {
 
     abstract val layoutRes: Int
 
-    abstract val initViews: View.() -> Unit
+    abstract val initViews: (View, Bundle?) -> Unit
 
     @Inject
     lateinit var viewModelFactory: ViewModelProvider.Factory
@@ -29,7 +28,7 @@ abstract class DaggerXFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initViews(view)
+        initViews(view, savedInstanceState)
     }
 
     open fun onBackPressed(): Boolean = false

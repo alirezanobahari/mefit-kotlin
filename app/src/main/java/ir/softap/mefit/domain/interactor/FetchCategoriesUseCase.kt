@@ -4,8 +4,8 @@ import io.reactivex.Single
 import ir.softap.mefit.data.model.Category
 import ir.softap.mefit.data.repository.CategoryRepository
 import ir.softap.mefit.domain.abstraction.SingleUseCase
-import ir.toolgram.toolgramapp.data.executor.ThreadExecutor
-import ir.toolgram.toolgramapp.domain.executor.PostExecutionThread
+import ir.softap.mefit.data.executor.ThreadExecutor
+import ir.softap.mefit.domain.executor.PostExecutionThread
 import javax.inject.Inject
 
 class FetchCategoriesUseCase @Inject constructor(

@@ -9,7 +9,7 @@
         android:id="@+id/flCategoryListToolbar"
         android:layout_width="0dp"
         android:layout_height="56dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/flCategoryListToolbar"
-        tools:background="@color/colorAccent">
+        tools:background="@color/colorPrimary">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lstCategory"

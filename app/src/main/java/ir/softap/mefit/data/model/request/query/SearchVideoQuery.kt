@@ -6,8 +6,8 @@ class SearchVideoQuery(
     query: String? = null,
     tagsId: List<String>? = null,
     typesId: List<String>? = null,
-    page: Int? = null,
-    count: Int? = null
+    var page: Int? = null,
+    var count: Int? = null
 ) : HashMap<String, Any>() {
 
     init {

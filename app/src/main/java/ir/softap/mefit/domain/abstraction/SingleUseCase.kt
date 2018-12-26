@@ -4,8 +4,8 @@ import io.reactivex.Single
 import io.reactivex.disposables.Disposable
 import io.reactivex.disposables.Disposables
 import io.reactivex.schedulers.Schedulers
-import ir.toolgram.toolgramapp.data.executor.ThreadExecutor
-import ir.toolgram.toolgramapp.domain.executor.PostExecutionThread
+import ir.softap.mefit.data.executor.ThreadExecutor
+import ir.softap.mefit.domain.executor.PostExecutionThread
 
 /**
  * Abstract class for a UseCase that returns an instance of a [Single].

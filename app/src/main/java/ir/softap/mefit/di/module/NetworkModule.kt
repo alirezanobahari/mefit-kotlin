@@ -8,14 +8,17 @@ import dagger.Module
 import dagger.Provides
 import ir.softap.mefit.data.network.BASE_URL
 import ir.softap.mefit.data.network.EnumRetrofitConverterFactory
+import ir.softap.mefit.data.network.HostSelectionInterceptor
 import ir.softap.mefit.di.scope.ApplicationScope
 import ir.softap.mefit.utilities.onDebug
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.scalars.ScalarsConverterFactory
 import java.util.concurrent.TimeUnit
 
+const val RPG_RETROFIT_SERVICE = "RPG_RETROFIT_SERVICE"
 
 @Module
 // Safe here as we are dealing with a Dagger 2 module
@@ -36,6 +39,7 @@ class NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create(gson))
+            .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(enumRetrofitConverterFactory)
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(okHttpClient)
@@ -50,9 +54,10 @@ class NetworkModule {
      */
     @ApplicationScope
     @Provides
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideOkHttpClient(hostSelectionInterceptor: HostSelectionInterceptor): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()
             .apply { onDebug { addNetworkInterceptor(StethoInterceptor()) } }
+            .addInterceptor(hostSelectionInterceptor.apply { host = BASE_URL })
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
         return okHttpClientBuilder.build()
@@ -67,6 +72,7 @@ class NetworkModule {
     fun provideGson(): Gson =
         GsonBuilder()
             .setLongSerializationPolicy(LongSerializationPolicy.DEFAULT)
+            .setLenient()
             .create()
 
 }

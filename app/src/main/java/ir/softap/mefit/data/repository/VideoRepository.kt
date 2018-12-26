@@ -14,8 +14,8 @@ class VideoRepository @Inject constructor(private val videoApi: VideoApi) {
     fun searchVideo(searchVideoQuery: SearchVideoQuery): Single<List<Video>> =
         videoApi.searchVideo(searchVideoQuery)
 
-    fun fetchVideoDetail(videoId: Int): Single<Video.VideoDetail> =
-        videoApi.fetchVideoDetail(videoId)
+    fun fetchVideoDetail(token: String, videoId: Int): Single<Video.VideoDetail> =
+        videoApi.fetchVideoDetail(token, videoId)
 
     fun fetchSuggestions(videoId: Int): Single<List<Video>> =
         videoApi.fetchSuggestions(videoId)

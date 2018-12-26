@@ -211,7 +211,6 @@ class HomeAdapter(
             }
 
             inner class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
                 fun onBind(position: Int) {
                     val video = getItem(position)
                     with(itemView) {

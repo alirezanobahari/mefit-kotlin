@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.MediaController
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
-import kotlinx.android.synthetic.main.fragment_video_player.view.*
+import kotlinx.android.synthetic.main.fragment_video_player.*
 
 
 class VideoPlayerFragment : DaggerXFragment() {
@@ -29,9 +29,9 @@ class VideoPlayerFragment : DaggerXFragment() {
 
     override val layoutRes: Int = R.layout.fragment_video_player
 
-    override val initViews: View.() -> Unit = {
+    override val initViews: (View, Bundle?) -> Unit = { view, _ ->
         val mediaController = MediaController(context, false)
-        mediaController.setAnchorView(this)
+        mediaController.setAnchorView(view)
         videoView.setMediaController(mediaController)
         videoView.requestFocus()
         videoView.setOnCompletionListener {
@@ -43,7 +43,7 @@ class VideoPlayerFragment : DaggerXFragment() {
         cbFullscreen.setOnCheckedChangeListener { _, isChecked ->
 
         }
-        cbFullscreen.isChecked = context.resources.configuration.orientation ==
+        cbFullscreen.isChecked = context!!.resources.configuration.orientation ==
                 ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
     }
 

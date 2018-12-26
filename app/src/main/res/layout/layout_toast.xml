@@ -4,15 +4,15 @@
     android:id="@+id/clToastContainer"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <TextView
         android:id="@+id/tvToastMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="8dp"
         android:background="@drawable/bg_toast"
+        android:padding="8dp"
         android:textAppearance="@style/TextAppearance.Dark.Medium"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"

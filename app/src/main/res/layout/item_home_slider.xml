@@ -10,7 +10,7 @@
     android:focusable="true"
     android:foreground="?attr/selectableItemBackground"
     android:layoutDirection="rtl"
-    tools:background="@color/colorAccent"
+    tools:background="@color/colorPrimary"
     tools:context=".ui.main.MainActivity">
 
     <com.makeramen.roundedimageview.RoundedImageView

@@ -1,6 +1,7 @@
 package ir.softap.mefit.data.model
 
 import android.os.Parcelable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
@@ -17,6 +18,16 @@ data class Comment(
     @Embedded val user: User,
     @SerializedName("created") @ColumnInfo(name = "createdDate") val createdDate: Date
 ) : Parcelable {
+    companion object {
+        val COMMENT_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Comment>() {
+            override fun areItemsTheSame(oldItem: Comment, newItem: Comment): Boolean =
+                oldItem.user.id == newItem.user.id && oldItem.createdDate == newItem.createdDate
+
+            override fun areContentsTheSame(oldItem: Comment, newItem: Comment): Boolean =
+                oldItem == newItem
+        }
+    }
+
     @Entity
     @Parcelize
     data class User(

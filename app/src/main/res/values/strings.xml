@@ -6,7 +6,34 @@
     <string name="msg_no_video_found">ویدیوای یافت نشد!</string>
     <string name="msg_nothing_found">چیزی یافت نشد!</string>
     <string name="action_retry">تلاش مجدد!</string>
+    <string name="action_submit">تایید</string>
+    <string name="action_cancel">لغو</string>
     <string name="msg_error_occurred">خطایی رخ داده است!</string>
+
+    <!--LoginActivity-->
+    <string name="hint_phone_number">شماره موبایل (مثال : 09123456789)</string>
+
+    <string name="validation_wrong_phone_number">شماره موبایل وارد شده صحیح نمی‌باشد!</string>
+    <string name="validation_empty_phone_number">لطفا شماره موبایل خود را وارد نمایید!</string>
+
+    <string name="msg_daily_tariffs">تعرفه روزانه پانصد تومان برای همراه اولی‌ها</string>
+
+    <string name="error_on_login">خطا در ورود!</string>
+
+    <string name="error_on_check_member_status">خطا در بررسی وضعیت کاربر!</string>
+
+    <string name="error_on_subscription">خطا در پردازش عملیات خرید اشتراک!</string>
+
+    <string name="error_on_subscription_transaction">خطا در عملیات تراکنش!</string>
+
+    <string name="title_enter_pid">کد تایید</string>
+
+    <string name="hint_pid">کد تایید را وارد نمایید</string>
+
+    <string name="validation_empty_pid">کد تایید را وارد نمایید!</string>
+    <string name="validation_invalid_pid">کد تایید وارد شده معتبر نمی‌باشد!</string>
+
+    <string name="action_enter">ورود</string>
 
     <!--HomeFragment-->
     <string name="action_more">بیشتر</string>

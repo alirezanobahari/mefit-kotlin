@@ -1,8 +1,8 @@
-package ir.toolgram.toolgramapp.domain.executor
+package ir.softap.mefit.domain.executor
 
 import io.reactivex.Scheduler
 import io.reactivex.android.schedulers.AndroidSchedulers
-import ir.toolgram.toolgramapp.domain.executor.PostExecutionThread
+import ir.softap.mefit.domain.executor.PostExecutionThread
 import javax.inject.Inject
 
 class UiThread @Inject internal constructor() : PostExecutionThread {

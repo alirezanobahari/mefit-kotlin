@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:background="@color/colorAccent">
+    tools:background="@color/colorPrimary">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstVideoDetail"
@@ -16,7 +16,6 @@
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_gravity="center"
-        android:indeterminateTint="@color/colorPrimary"
         tools:ignore="UnusedAttribute" />
 
 </FrameLayout>

@@ -1,4 +1,4 @@
-package ir.toolgram.toolgramapp.domain.executor
+package ir.softap.mefit.domain.executor
 
 import io.reactivex.Scheduler
 

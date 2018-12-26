@@ -1,4 +1,4 @@
-package ir.toolgram.toolgramapp.data.executor
+package ir.softap.mefit.data.executor
 
 import java.util.concurrent.LinkedBlockingQueue
 import java.util.concurrent.ThreadFactory

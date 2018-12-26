@@ -5,10 +5,10 @@ import dagger.Module
 import dagger.Provides
 import ir.softap.mefit.Mefit
 import ir.softap.mefit.di.scope.ApplicationScope
-import ir.toolgram.toolgramapp.data.executor.ThreadExecutor
-import ir.toolgram.toolgramapp.data.executor.ThreadExecutorImpl
-import ir.toolgram.toolgramapp.domain.executor.PostExecutionThread
-import ir.toolgram.toolgramapp.domain.executor.UiThread
+import ir.softap.mefit.data.executor.ThreadExecutor
+import ir.softap.mefit.data.executor.ThreadExecutorImpl
+import ir.softap.mefit.domain.executor.PostExecutionThread
+import ir.softap.mefit.domain.executor.UiThread
 import kotlinx.coroutines.Dispatchers
 import kotlin.coroutines.CoroutineContext
 
