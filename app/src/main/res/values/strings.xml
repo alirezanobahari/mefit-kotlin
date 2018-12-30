@@ -8,7 +8,18 @@
     <string name="action_retry">تلاش مجدد!</string>
     <string name="action_submit">تایید</string>
     <string name="action_cancel">لغو</string>
+    <string name="action_yes">بله</string>
+    <string name="action_no">خیر</string>
     <string name="msg_error_occurred">خطایی رخ داده است!</string>
+
+    <string name="title_zero">0</string>
+
+    <string name="format_date_year">%s سال پیش</string>
+    <string name="format_date_month">%s ماه پیش</string>
+    <string name="format_date_week">%s هفته پیش</string>
+    <string name="format_date_day">%s روز پیش</string>
+    <string name="format_date_hour">%s ساعت پیش</string>
+    <string name="format_date_minute">%s دقیقه پیش</string>
 
     <!--LoginActivity-->
     <string name="hint_phone_number">شماره موبایل (مثال : 09123456789)</string>
@@ -45,8 +56,43 @@
     <!--SearchFragment-->
     <string name="hint_search">جستــجو…</string>
 
+    <string name="title_filter_on">فیلتر بر اساس</string>
+
+    <!--ProfileFragment-->
+    <string name="title_profile">پروفایل کاربری</string>
+    <string name="title_personal_details">مشخصات کاربر</string>
+    <string name="title_other">سایر</string>
+
+    <string name="hint_first_name">نام</string>
+    <string name="hint_last_name">نام خانوادگی</string>
+    <string name="hint_email">ایمیل</string>
+
+    <string name="validation_empty_first_name">نام خود را وارد نمایید!</string>
+    <string name="validation_empty_last_name">نام خانوادگی خود را وارد نمایید!</string>
+    <string name="validation_empty_email">آدرس ایمیل خود را وارد نمایید!</string>
+    <string name="validation_invalid_email">آدرس ایمیل وارد شده معتبر نمی‌باشد!</string>
+
+    <string name="msg_want_to_logout">آیا مایل به خروج از حساب کاربری خود می‌باشید؟</string>
+    <string name="msg_want_to_unsubscribe">آیا مایل به لغو اشتراک خود می‌باشید؟</string>
+
+    <string name="action_save_changes">ذخیره</string>
+    <string name="action_logout">خروج</string>
+    <string name="action_unsubscribe">لغو اشتراک</string>
+
     <!--VideoDetailFragment-->
+    <string name="title_issuer">مدرس :</string>
+    <string name="title_suggested_videos">ویدیو‌های مرتبط</string>
+    <string name="title_tags">تگ‌ها</string>
     <string name="title_premium_description">توضیحات اختصاصی</string>
     <string name="msg_this_video_has_premium_description">این ویدیو شامل توضیحات اختصاصی می‌باشد!</string>
+    <string name="title_comments">نظرات</string>
+
+    <string name="msg_no_comment_found">هیچ نظری برای این ویدیو ثبت نشده است، شما اولین نفر باشید!</string>
+
+    <string name="hint_enter_comment">نظر خود را بنویسید.</string>
+
+    <string name="validation_empty_comment">نظر خود را وارد نمایید!</string>
+
+    <string name="error_on_like">خطا در ثبت لایک!</string>
 
 </resources>

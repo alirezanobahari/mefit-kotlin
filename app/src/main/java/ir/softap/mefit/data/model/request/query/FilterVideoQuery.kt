@@ -1,6 +1,6 @@
 package ir.softap.mefit.data.model.request.query
 
-class SearchVideoQuery(
+class FilterVideoQuery(
     issuerId: Int? = null,
     catsId: List<String>? = null,
     query: String? = null,

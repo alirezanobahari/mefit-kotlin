@@ -11,6 +11,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.content.res.ResourcesCompat
 import ir.softap.mefit.R
 import ir.softap.mefit.data.model.Video
 import ir.softap.mefit.utilities.extensions.colors
@@ -19,51 +20,48 @@ import ir.softap.mefit.utilities.extensions.toPx
 class DescriptionView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
-    defStyleAttr: Int
+    defStyleAttr: Int = 0
 ) : LinearLayout(context, attrs, defStyleAttr) {
 
     var descriptions: List<Video.VideoDetail.Description>? = null
         set(value) {
             field = value
-            refreshDescription()
+            value?.apply {
+                onEach { description ->
+                    addView(buildDescriptionTitle(description.title))
+                    description.subDescriptions.onEach { subDescription ->
+                        addView(buildDescriptionSubtitle(subDescription.title))
+                        addView(buildDescriptionText(subDescription.text))
+                    }
+                }
+            }
         }
 
     var premiumDescription: Video.VideoDetail.PremiumDescription? = null
         set(value) {
             field = value
-            refreshDescription()
+            value?.descriptions?.apply {
+                if (isNotEmpty()) showPremiumDescriptionHeader()
+                else showPremiumDescriptionMessage()
+                onEach { description ->
+                    addView(buildDescriptionTitle(description.title))
+                    description.subDescriptions.onEach { subDescription ->
+                        addView(buildDescriptionSubtitle(subDescription.title))
+                        addView(buildDescriptionText(subDescription.text))
+                    }
+                }
+            }
         }
 
     init {
         layoutDirection = View.LAYOUT_DIRECTION_RTL
-    }
-
-    private fun refreshDescription() {
-        descriptions?.apply {
-            onEach { description ->
-                addView(buildDescriptionTitle(description.title))
-                description.subDescriptions.onEach { subDescription ->
-                    addView(buildDescriptionSubtitle(subDescription.title))
-                    addView(buildDescriptionText(subDescription.text))
-                }
-            }
-        }
-        premiumDescription?.descriptions?.apply {
-            if (isNotEmpty()) showPremiumDescriptionHeader()
-            else showPremiumDescriptionMessage()
-            onEach { description ->
-                addView(buildDescriptionTitle(description.title))
-                description.subDescriptions.onEach { subDescription ->
-                    addView(buildDescriptionSubtitle(subDescription.title))
-                    addView(buildDescriptionText(subDescription.text))
-                }
-            }
-        }
+        orientation = VERTICAL
     }
 
     private fun buildDescriptionTitle(title: String): TextView =
         TextView(context).apply {
-            setTextAppearance(context, R.style.TextAppearance_Light_Bold)
+            typeface = ResourcesCompat.getFont(context, R.font.iran_sans_mobile_bold)
+            setTextColor(context.colors[R.color.colorTextLight])
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
             setPaddingRelative(0, 8.toPx, 0, 0)
             setSingleLine(true)
@@ -75,7 +73,8 @@ class DescriptionView @JvmOverloads constructor(
     @SuppressLint("SetTextI18n")
     private fun buildDescriptionSubtitle(subTitle: String): TextView =
         TextView(context).apply {
-            setTextAppearance(context, R.style.TextAppearance_Light)
+            typeface = ResourcesCompat.getFont(context, R.font.iran_sans_mobile)
+            setTextColor(context.colors[R.color.colorTextLight])
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
             setPaddingRelative(4.toPx, 8.toPx, 0, 0)
             setSingleLine(true)
@@ -86,7 +85,8 @@ class DescriptionView @JvmOverloads constructor(
 
     private fun buildDescriptionText(text: String): TextView =
         TextView(context).apply {
-            setTextAppearance(context, R.style.TextAppearance_Light_Light)
+            typeface = ResourcesCompat.getFont(context, R.font.iran_sans_mobile_light)
+            setTextColor(context.colors[R.color.colorTextLight])
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 12f)
             setPaddingRelative(8.toPx, 8.toPx, 0, 0)
             ellipsize = TextUtils.TruncateAt.MARQUEE
@@ -97,7 +97,7 @@ class DescriptionView @JvmOverloads constructor(
     private fun showPremiumDescriptionHeader() {
         addView(
             View(context).apply {
-                setBackgroundColor(context.colors[R.color.colorDarkGray])
+                setBackgroundColor(context.colors[R.color.colorDarkGrey])
             },
             LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -107,7 +107,8 @@ class DescriptionView @JvmOverloads constructor(
             }
         )
         addView(TextView(context).apply {
-            setTextAppearance(context, R.style.TextAppearance_Light_Bold)
+            typeface = ResourcesCompat.getFont(context, R.font.iran_sans_mobile_bold)
+            setTextColor(context.colors[R.color.colorTextLight])
             setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
             setTextColor(context.colors[R.color.colorPrimary])
             setPadding(0, 8.toPx, 0, 0)
@@ -118,7 +119,7 @@ class DescriptionView @JvmOverloads constructor(
     private fun showPremiumDescriptionMessage() {
         addView(
             View(context).apply {
-                setBackgroundColor(context.colors[R.color.colorDarkGray])
+                setBackgroundColor(context.colors[R.color.colorDarkGrey])
             },
             LinearLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT,
@@ -149,7 +150,8 @@ class DescriptionView @JvmOverloads constructor(
             )
             it.addView(
                 TextView(context).apply {
-                    setTextAppearance(context, R.style.TextAppearance_Light)
+                    typeface = ResourcesCompat.getFont(context, R.font.iran_sans_mobile)
+                    setTextColor(context.colors[R.color.colorTextLight])
                     setTextSize(TypedValue.COMPLEX_UNIT_SP, 14f)
                     setText(R.string.msg_this_video_has_premium_description)
                 },

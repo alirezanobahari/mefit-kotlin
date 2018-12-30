@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:layoutDirection="rtl">
 
@@ -11,7 +11,7 @@
         android:id="@+id/viewVideoDetailHeader"
         android:layout_width="0dp"
         android:layout_height="46dp"
-        android:background="@color/colorDarkGray"
+        android:background="@color/colorDarkGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -21,17 +21,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:text="@string/title_zero"
         android:textAppearance="@style/TextAppearance.Light"
+        android:textColor="@color/colorLightGrey"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/viewVideoDetailHeader"
         app:layout_constraintStart_toStartOf="@+id/viewVideoDetailHeader"
-        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader"
-        tools:text="0" />
+        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader" />
 
     <ImageButton
         android:id="@+id/btnComments"
         style="@style/SquareImageButton.Light"
         android:layout_marginStart="4dp"
+        android:tint="@color/colorLightGrey"
         app:layout_constraintBottom_toBottomOf="@+id/viewVideoDetailHeader"
         app:layout_constraintStart_toEndOf="@+id/tvCommentCount"
         app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader"
@@ -43,12 +45,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
+        android:text="@string/title_zero"
         android:textAppearance="@style/TextAppearance.Light"
+        android:textColor="@color/colorLightGrey"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/viewVideoDetailHeader"
         app:layout_constraintStart_toEndOf="@+id/btnComments"
-        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader"
-        tools:text="0" />
+        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader" />
 
     <CheckBox
         android:id="@+id/cbLike"
@@ -58,13 +61,13 @@
         android:layout_marginStart="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/viewVideoDetailHeader"
         app:layout_constraintStart_toEndOf="@+id/tvLikeCount"
-        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader"
-        app:srcCompat="@drawable/ic_comment" />
+        app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader" />
 
     <ImageButton
         android:id="@+id/btnAddToPlaylist"
         style="@style/SquareImageButton.Light"
         android:layout_marginEnd="16dp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@+id/viewVideoDetailHeader"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/viewVideoDetailHeader"
@@ -80,7 +83,7 @@
         android:ellipsize="marquee"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Light.Bold"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/colorAccent"
         android:textDirection="rtl"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
@@ -88,18 +91,34 @@
         tools:text="@tools:sample/first_names" />
 
     <TextView
+        android:id="@+id/tvTitleIssuerName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/title_issuer"
+        android:textAppearance="@style/TextAppearance.Light"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+
+    <TextView
         android:id="@+id/tvIssuerName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        android:background="?attr/selectableItemBackground"
+        android:clickable="true"
         android:ellipsize="marquee"
+        android:focusable="true"
         android:singleLine="true"
         android:textAppearance="@style/TextAppearance.Light"
+        android:textColor="@color/colorAccent"
         android:textDirection="rtl"
         android:textSize="14sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvVideoTitle" />
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvTitleIssuerName"
+        app:layout_constraintStart_toEndOf="@+id/tvTitleIssuerName"
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/tvTags"
@@ -107,6 +126,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:text="@string/title_tags"
+        android:textAppearance="@style/TextAppearance.Light"
+        android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvIssuerName" />
 
@@ -129,7 +151,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:background="@color/colorDarkGray"
+        android:background="@color/colorDarkGrey"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lstTag" />
@@ -151,13 +173,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
+        android:text="@string/title_suggested_videos"
         android:textAppearance="@style/TextAppearance.Light.Bold"
-        android:textColor="@color/colorPrimary"
         android:textDirection="rtl"
         android:textSize="14sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/descriptionView"
-        tools:text="@tools:sample/first_names" />
+        app:layout_constraintTop_toBottomOf="@+id/descriptionView" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/lstSuggestedVideo"
@@ -166,6 +187,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
+        android:layout_marginBottom="24dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvSuggestedVideos"

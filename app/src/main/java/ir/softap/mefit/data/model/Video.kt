@@ -2,8 +2,8 @@ package ir.softap.mefit.data.model
 
 import android.os.Parcelable
 import androidx.recyclerview.widget.DiffUtil
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import ir.softap.mefit.data.network.BASE_URL
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
@@ -26,15 +26,15 @@ data class Video(
         @SerializedName("comments_count") val commentsCount: Int,
         @SerializedName("desc") val descriptions: List<Description>?,
         val category: Category,
-        val like: Like,
+        val likes: Like,
         val rate: Rate,
         @SerializedName("premium_desc") val premiumDescription: PremiumDescription?
     ) : Parcelable {
 
         @Parcelize
         data class Url(
-            @SerializedName("url_480") val url480: String,
-            @SerializedName("url_720") val url720: String
+            @SerializedName("url_480") val url480: String?,
+            @SerializedName("url_720") val url720: String?
         ) : Parcelable
 
         @Parcelize
@@ -62,8 +62,8 @@ data class Video(
     @Parcelize
     data class Issuer(
         val id: String,
-        @SerializedName("first_name") val firstName: String,
-        @SerializedName("last_name") val lastName: String
+        @SerializedName("first_name") val firstName: String?,
+        @SerializedName("last_name") val lastName: String?
     ) : Parcelable
 
     @Parcelize
@@ -93,5 +93,12 @@ val VIDEO_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Video>() {
 
     override fun areContentsTheSame(oldItem: Video, newItem: Video): Boolean =
         oldItem == newItem
+}
 
+val TAG_DIFF_CALLBACK = object : DiffUtil.ItemCallback<Video.Tag>() {
+    override fun areItemsTheSame(oldItem: Video.Tag, newItem: Video.Tag): Boolean =
+        oldItem.id == newItem.id
+
+    override fun areContentsTheSame(oldItem: Video.Tag, newItem: Video.Tag): Boolean =
+        oldItem == newItem
 }

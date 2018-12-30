@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorPrimary"
+    android:layoutDirection="rtl">
+
+    <EditText
+        android:id="@+id/edComment"
+        style="@style/FrameEditText.Light"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="24dp"
+        android:gravity="start|center_vertical"
+        android:hint="@string/hint_enter_comment"
+        android:inputType="textMultiLine"
+        android:minHeight="45dp"
+        android:paddingStart="16dp"
+        android:paddingEnd="46dp"
+        android:maxLines="4"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:scrollbars="vertical"
+        android:textAppearance="@style/TextAppearance.Light"
+        android:textDirection="rtl"
+        android:textSize="14sp"
+        android:textColor="@color/colorTextLight"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="Autofill" />
+
+    <ImageButton
+        android:id="@+id/btnSendComment"
+        style="@style/SquareImageButton.Light"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="6dp"
+        android:rotation="180"
+        android:tint="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="@+id/edComment"
+        app:layout_constraintEnd_toEndOf="@+id/edComment"
+        app:srcCompat="@drawable/ic_send"
+        tools:ignore="ContentDescription" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/btnSendComment"
+        app:layout_constraintEnd_toEndOf="@+id/btnSendComment"
+        app:layout_constraintStart_toStartOf="@+id/btnSendComment"
+        app:layout_constraintTop_toTopOf="@+id/btnSendComment"
+        tools:ignore="UnusedAttribute" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

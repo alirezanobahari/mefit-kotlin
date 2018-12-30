@@ -13,6 +13,8 @@ import ir.softap.mefit.ui.main.category.CategoryListViewModel
 import ir.softap.mefit.ui.main.home.HomeViewModel
 import ir.softap.mefit.ui.main.search.SearchViewModel
 import ir.softap.mefit.ui.splash.SplashViewModel
+import ir.softap.mefit.ui.video.list.VideoListViewModel
+import ir.softap.mefit.ui.video.show.VideoShowViewModel
 
 @Module
 // Safe here as we are dealing with a Dagger 2 module
@@ -51,5 +53,15 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     internal abstract fun bindSearchViewModel(view: SearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(VideoListViewModel::class)
+    internal abstract fun bindVideoListViewModel(view: VideoListViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(VideoShowViewModel::class)
+    internal abstract fun bindVideoShowViewModel(view: VideoShowViewModel): ViewModel
 
 }

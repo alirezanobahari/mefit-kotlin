@@ -6,6 +6,8 @@ import ir.softap.mefit.di.scope.ActivityScope
 import ir.softap.mefit.ui.login.LoginActivity
 import ir.softap.mefit.ui.main.MainActivity
 import ir.softap.mefit.ui.splash.SplashActivity
+import ir.softap.mefit.ui.video.list.VideoListActivity
+import ir.softap.mefit.ui.video.show.VideoShowActivity
 
 @Module(
     includes = [
@@ -37,5 +39,19 @@ abstract class ActivityBindingModule {
     @ActivityScope
     @ContributesAndroidInjector
     abstract fun bindMainActivity(): MainActivity
+
+    /**
+     * [VideoListActivity] binder
+     */
+    @ActivityScope
+    @ContributesAndroidInjector
+    abstract fun bindVideoListActivity(): VideoListActivity
+
+    /**
+     * [VideoShowActivity] binder
+     */
+    @ActivityScope
+    @ContributesAndroidInjector
+    abstract fun bindVideoShowActivity(): VideoShowActivity
 
 }

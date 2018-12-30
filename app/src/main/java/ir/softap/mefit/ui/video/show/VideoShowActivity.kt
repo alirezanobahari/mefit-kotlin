@@ -2,12 +2,18 @@ package ir.softap.mefit.ui.video.show
 
 import android.content.Context
 import android.content.Intent
+import android.content.pm.ActivityInfo
 import android.os.Bundle
+import android.view.WindowManager
+import androidx.lifecycle.ViewModelProviders
 import ir.softap.mefit.R
 import ir.softap.mefit.data.model.Video
-import ir.softap.mefit.ui.abstraction.DaggerXActivity
+import ir.softap.mefit.ui.abstraction.DaggerXFragmentActivity
+import ir.softap.mefit.utilities.extensions.addFragment
+import ir.softap.mefit.utilities.onApi
+import ir.softap.mefit.utilities.onApiAndAbove
 
-class VideoShowActivity : DaggerXActivity() {
+class VideoShowActivity : DaggerXFragmentActivity() {
 
     companion object {
         private const val EXTRA_VIDEO = "ir.softap.mefit.ui.video.show.EXTRA_VIDEO"
@@ -22,13 +28,46 @@ class VideoShowActivity : DaggerXActivity() {
         intent.extras?.getParcelable<Video>(EXTRA_VIDEO)
     }
 
-    override val layoutRes: Int = R.layout.activity_video_show
 
-    override val initViews: (Bundle?) -> Unit = {
-
-
-
+    private val videoShowViewModel: VideoShowViewModel by lazy {
+        ViewModelProviders.of(this, viewModelFactory)[VideoShowViewModel::class.java]
     }
 
+    override val layoutRes: Int = R.layout.activity_video_show
+
+    override val initViews: (Bundle?) -> Unit = { saveInstanceState ->
+        video?.also { videoShowViewModel.fetchVideoDetails(it) }
+
+        if (saveInstanceState == null) {
+            addFragment(VideoPlayerFragment(), R.id.flVideoPlayerFragmentContainer, false)
+            addFragment(VideoDetailFragment(), R.id.flVideoDetailFragmentContainer, false)
+        }
+
+        videoShowViewModel.observeState(this) { videoShowState ->
+            if (videoShowState.fullscreen) {
+                onApiAndAbove(18) {
+                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
+                }
+                onApi(17) {
+                    requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE
+                }
+                window.setFlags(
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                    WindowManager.LayoutParams.FLAG_FULLSCREEN
+                )
+            } else {
+                requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
+                window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+            }
+        }
+    }
+
+    override fun onBackPressed() {
+        if (videoShowViewModel.state.value?.fullscreen == true) {
+            videoShowViewModel.fullScreen(false)
+            return
+        }
+        super.onBackPressed()
+    }
 
 }

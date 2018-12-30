@@ -3,8 +3,7 @@ package ir.softap.mefit.ui.main.search
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.paging.PagedListAdapter
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ir.softap.mefit.R
 import ir.softap.mefit.data.model.VIDEO_DIFF_CALLBACK
@@ -15,11 +14,10 @@ import ir.softap.mefit.ui.common.glide.GlideApp
 import ir.softap.mefit.utilities.extensions.TAG
 import kotlinx.android.synthetic.main.item_list_video.view.*
 
-class VideoPageListAdapter(
-    private val fragment: Fragment,
+class VideoListAdapter(
     private val retry: () -> Unit,
     private val videoSelect: (Video) -> Unit
-) : PagedListAdapter<Video, RecyclerView.ViewHolder>(VIDEO_DIFF_CALLBACK) {
+) : ListAdapter<Video, RecyclerView.ViewHolder>(VIDEO_DIFF_CALLBACK) {
 
     companion object {
         const val VIEW_TYPE_STATE = 1
@@ -90,7 +88,7 @@ class VideoPageListAdapter(
                 tvVideoDuration.text = video.duration
                 cbLike.isChecked = video.like.isUserLiked
                 tvLikeCount.text = video.like.count.toString()
-                GlideApp.with(fragment)
+                GlideApp.with(context)
                     .load(video.thumbnail)
                     .into(imgVideoThumbnail)
                 setOnClickListener { videoSelect(video) }
@@ -103,7 +101,7 @@ class VideoPageListAdapter(
                 tvVideoDuration.text = ""
                 cbLike.isChecked = false
                 tvLikeCount.text = ""
-                GlideApp.with(fragment).clear(imgVideoThumbnail)
+                GlideApp.with(context).clear(imgVideoThumbnail)
             }
         }
     }

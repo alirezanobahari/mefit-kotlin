@@ -44,11 +44,11 @@
             android:layout_height="match_parent"
             android:icon="@drawable/selector_ic_navigation_search" />
 
-        <com.google.android.material.tabs.TabItem
+      <!--  <com.google.android.material.tabs.TabItem
             android:id="@+id/tabNavigationPlaylist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:icon="@drawable/selector_ic_navigation_playlist" />
+            android:icon="@drawable/selector_ic_navigation_playlist" />-->
 
         <com.google.android.material.tabs.TabItem
             android:id="@+id/tabNavigationProfile"
@@ -61,7 +61,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         app:layout_constraintBottom_toTopOf="@+id/tabMainNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -69,7 +69,7 @@
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="@+id/tabMainNavigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

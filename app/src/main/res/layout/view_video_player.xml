@@ -1,0 +1,159 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@android:color/black"
+    android:layoutDirection="rtl">
+
+    <ir.softap.mefit.ui.common.widget.TextureVideoView
+        android:id="@+id/videoPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center" />
+
+    <ProgressBar
+        android:id="@+id/pbLoading"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:layout_gravity="center"
+        android:indeterminateTint="@color/colorAccent"
+        tools:ignore="UnusedAttribute" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="16dp"
+        android:alpha="0.5"
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="ContentDescription" />
+
+    <RelativeLayout
+        android:id="@+id/videoControl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorDarkOverlay">
+
+        <RelativeLayout
+            android:id="@+id/topBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_grad_player_toolbar_overlay"
+            android:clickable="false"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/btnFullscreen"
+                style="@style/SquareImageButton.Light"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="8dp"
+                app:srcCompat="@drawable/ic_fullscreen"
+                tools:ignore="ContentDescription" />
+
+            <ImageView
+                android:id="@+id/btnClose"
+                style="@style/SquareImageButton.Light"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                app:srcCompat="@drawable/ic_close"
+                tools:ignore="ContentDescription" />
+
+        </RelativeLayout>
+
+
+        <ImageButton
+            android:id="@+id/btnPlayPause"
+            style="@style/SquareImageButton.Light"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            app:srcCompat="@drawable/ic_pause"
+            tools:ignore="ContentDescription" />
+
+        <LinearLayout
+            android:id="@+id/bottomBar"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_alignParentBottom="true"
+            android:background="@drawable/bg_grad_player_bottom_bar_overlay"
+            android:baselineAligned="false"
+            android:clickable="false"
+            android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/tvVideoTimer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    tools:text="00:00" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="50">
+
+                <androidx.appcompat.widget.AppCompatSeekBar
+                    android:id="@+id/sbVideoPlayer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:secondaryProgressTint="@color/colorAccent"
+                    android:thumbTint="@android:color/white"
+                    tools:ignore="UnusedAttribute" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+
+                <TextView
+                    android:id="@+id/tvVideoTime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:ellipsize="end"
+                    android:gravity="center"
+                    android:singleLine="true"
+                    android:textColor="@color/colorTextLight"
+                    android:textSize="14sp"
+                    tools:text="00:00" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10">
+
+                <ImageButton
+                    android:id="@+id/btnHd"
+                    style="@style/SquareImageButton.Light"
+                    android:layout_centerInParent="true"
+                    app:srcCompat="@drawable/ic_hd"
+                    tools:ignore="ContentDescription" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

@@ -10,9 +10,8 @@
 
     <VideoView
         android:id="@+id/videoView"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:background="@android:color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,7 +49,7 @@
         android:id="@+id/pbLoading"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:indeterminateTint="@color/colorPrimary"
+        android:indeterminateTint="@color/colorAccent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,14 +66,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <CheckBox
-        android:id="@+id/cbVideoQuality"
-        style="@style/VideoQualityCheckBox"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
+    <ImageButton
+        android:id="@+id/btnVideoQuality"
+        style="@style/SquareImageButton.Light"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_hd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

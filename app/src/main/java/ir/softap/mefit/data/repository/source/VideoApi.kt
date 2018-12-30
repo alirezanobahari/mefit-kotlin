@@ -3,7 +3,7 @@ package ir.softap.mefit.data.repository.source
 import io.reactivex.Single
 import ir.softap.mefit.data.model.Home
 import ir.softap.mefit.data.model.Video
-import ir.softap.mefit.data.model.request.query.SearchVideoQuery
+import ir.softap.mefit.data.model.request.query.FilterVideoQuery
 import ir.softap.mefit.data.network.AUTH
 import ir.softap.mefit.data.network.CAT_SLUG
 import retrofit2.http.GET
@@ -17,7 +17,7 @@ interface VideoApi {
     fun fetchHome(): Single<List<Home>>
 
     @GET("$CAT_SLUG/filter")
-    fun searchVideo(@QueryMap searchVideoQuery: SearchVideoQuery): Single<List<Video>>
+    fun filterVideos(@QueryMap filterVideoQuery: FilterVideoQuery): Single<List<Video>>
 
     @GET("$CAT_SLUG/get-video")
     fun fetchVideoDetail(

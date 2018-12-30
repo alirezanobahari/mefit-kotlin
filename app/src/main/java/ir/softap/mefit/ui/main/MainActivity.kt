@@ -44,8 +44,8 @@ class MainActivity : DaggerXFragmentActivity() {
                     0 -> mainViewModel.navigateTo(MainNavigation.HOME)
                     1 -> mainViewModel.navigateTo(MainNavigation.CATEGORY)
                     2 -> mainViewModel.navigateTo(MainNavigation.SEARCH)
-                    3 -> mainViewModel.navigateTo(MainNavigation.PLAYLIST)
-                    4 -> mainViewModel.navigateTo(MainNavigation.PROFILE)
+                   // 3 -> mainViewModel.navigateTo(MainNavigation.PLAYLIST)
+                    3 -> mainViewModel.navigateTo(MainNavigation.PROFILE)
                 }
             }
 

@@ -12,6 +12,7 @@ import ir.softap.mefit.R
 import ir.softap.mefit.data.model.*
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ListStateItemViewHolder
+import ir.softap.mefit.ui.common.adapter.LinearVideoAdapter
 import ir.softap.mefit.ui.common.decoration.EqualSpacingItemDecoration
 import ir.softap.mefit.ui.common.glide.GlideApp
 import ir.softap.mefit.utilities.extensions.TAG
@@ -19,10 +20,8 @@ import ir.softap.mefit.utilities.extensions.toPx
 import kotlinx.android.synthetic.main.item_home_section_slider.view.*
 import kotlinx.android.synthetic.main.item_home_section_video.view.*
 import kotlinx.android.synthetic.main.item_home_slider.view.*
-import kotlinx.android.synthetic.main.item_list_video.view.*
 
 class HomeAdapter(
-    private val fragment: Fragment,
     private val retry: () -> Unit,
     private val homeSelect: (Home) -> Unit,
     private val videoSelect: (Video) -> Unit
@@ -145,7 +144,7 @@ class HomeAdapter(
                         tvSliderTitle.text = video.title
                         cbSliderLike.isChecked = video.like.isUserLiked
                         tvSliderLikeCount.text = video.like.count.toString()
-                        GlideApp.with(fragment)
+                        GlideApp.with(context)
                             .load(video.thumbnail)
                             .into(imgSliderThumbnail)
                         setOnClickListener { videoSelect(video) }
@@ -157,7 +156,7 @@ class HomeAdapter(
                         tvSliderTitle.text = ""
                         cbSliderLike.isChecked = false
                         tvSliderLikeCount.text = ""
-                        GlideApp.with(fragment).clear(imgSliderThumbnail)
+                        GlideApp.with(context).clear(imgSliderThumbnail)
                     }
                 }
             }
@@ -175,7 +174,7 @@ class HomeAdapter(
                 with(lstHomeSectionVideo) {
                     layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
                     addItemDecoration(EqualSpacingItemDecoration(16.toPx, EqualSpacingItemDecoration.HORIZONTAL))
-                    adapter = VideoAdapter().apply { submitList(home.videos) }
+                    adapter = LinearVideoAdapter(videoSelect).apply { submitList(home.videos) }
                 }
             }
         }
@@ -188,51 +187,6 @@ class HomeAdapter(
                     layoutManager = null
                     adapter = null
                     removeItemDecorationAt(0)
-                }
-            }
-        }
-
-        inner class VideoAdapter : ListAdapter<Video, VideoAdapter.VideoViewHolder>(VIDEO_DIFF_CALLBACK) {
-            override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VideoViewHolder =
-                VideoViewHolder(
-                    layoutInflater.inflate(
-                        R.layout.item_list_video,
-                        parent,
-                        false
-                    )
-                )
-
-            override fun onBindViewHolder(holder: VideoViewHolder, position: Int) =
-                holder.onBind(position)
-
-            override fun onViewRecycled(holder: VideoViewHolder) {
-                holder.onRecycled()
-                super.onViewRecycled(holder)
-            }
-
-            inner class VideoViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-                fun onBind(position: Int) {
-                    val video = getItem(position)
-                    with(itemView) {
-                        tvVideoTitle.text = video.title
-                        tvVideoDuration.text = video.duration
-                        cbLike.isChecked = video.like.isUserLiked
-                        tvLikeCount.text = video.like.count.toString()
-                        GlideApp.with(fragment)
-                            .load(video.thumbnail)
-                            .into(imgVideoThumbnail)
-                        setOnClickListener { videoSelect(video) }
-                    }
-                }
-
-                fun onRecycled() {
-                    with(itemView) {
-                        tvVideoTitle.text = ""
-                        tvVideoDuration.text = ""
-                        cbLike.isChecked = false
-                        tvLikeCount.text = ""
-                        GlideApp.with(fragment).clear(imgVideoThumbnail)
-                    }
                 }
             }
         }

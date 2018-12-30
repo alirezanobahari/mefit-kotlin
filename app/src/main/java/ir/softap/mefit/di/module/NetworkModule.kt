@@ -6,6 +6,7 @@ import com.google.gson.GsonBuilder
 import com.google.gson.LongSerializationPolicy
 import dagger.Module
 import dagger.Provides
+import ir.softap.mefit.data.network.BASE_HOST
 import ir.softap.mefit.data.network.BASE_URL
 import ir.softap.mefit.data.network.EnumRetrofitConverterFactory
 import ir.softap.mefit.data.network.HostSelectionInterceptor
@@ -57,7 +58,7 @@ class NetworkModule {
     fun provideOkHttpClient(hostSelectionInterceptor: HostSelectionInterceptor): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()
             .apply { onDebug { addNetworkInterceptor(StethoInterceptor()) } }
-            .addInterceptor(hostSelectionInterceptor.apply { host = BASE_URL })
+            .addInterceptor(hostSelectionInterceptor.apply { host = BASE_HOST })
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)
         return okHttpClientBuilder.build()

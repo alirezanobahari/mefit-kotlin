@@ -5,104 +5,164 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:background="@color/colorAccent">
+    tools:background="@color/colorPrimary">
 
-    <com.makeramen.roundedimageview.RoundedImageView
-        android:id="@+id/imgProfilePlaceHolder"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="32dp"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/clProfileToolbar"
+        android:layout_width="0dp"
+        android:layout_height="56dp"
+        android:background="@color/colorAccent"
+        android:elevation="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:riv_border_color="@android:color/white"
-        app:riv_border_width="1dp"
-        app:riv_oval="true"
-        app:srcCompat="@drawable/ic_profile_place_holder"
-        tools:src="@drawable/ic_profile_place_holder" />
+        tools:ignore="UnusedAttribute">
 
-    <EditText
-        android:id="@+id/edFirstName"
-        style="@style/FrameEditText"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:textAppearance="@style/TextAppearance.Light"
-        app:layout_constraintBottom_toTopOf="@+id/edLastName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgProfilePlaceHolder"
-        app:layout_constraintVertical_chainStyle="packed" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/title_profile"
+            android:textAppearance="@style/TextAppearance.Dark.Bold"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/edLastName"
-        style="@style/FrameEditText"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:textAppearance="@style/TextAppearance.Light"
-        app:layout_constraintBottom_toTopOf="@+id/edEmail"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edFirstName" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <EditText
-        android:id="@+id/edEmail"
-        style="@style/FrameEditText"
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        android:textAppearance="@style/TextAppearance.Light"
-        app:layout_constraintBottom_toTopOf="@+id/btnSaveChanges"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edLastName" />
-
-    <Button
-        android:id="@+id/btnSaveChanges"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCancelSubscription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edEmail" />
-
-    <Button
-        android:id="@+id/btnCancelSubscription"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnLogout"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSaveChanges" />
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="32dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnCancelSubscription" />
+        app:layout_constraintTop_toBottomOf="@+id/clProfileToolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/title_personal_details"
+                android:textAppearance="@style/TextAppearance.Light.Bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/colorDarkGrey" />
+
+            <EditText
+                android:id="@+id/edFirstName"
+                style="@style/FrameEditText.Light"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/hint_first_name"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.Light"
+                android:textColor="@color/colorTextLight"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/edLastName"
+                style="@style/FrameEditText.Light"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/hint_last_name"
+                android:inputType="textPersonName"
+                android:textAppearance="@style/TextAppearance.Light"
+                android:textColor="@color/colorTextLight"
+                tools:ignore="Autofill" />
+
+            <EditText
+                android:id="@+id/edEmail"
+                style="@style/FrameEditText.Light"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="32dp"
+                android:hint="@string/hint_email"
+                android:inputType="textEmailAddress"
+                android:textAppearance="@style/TextAppearance.Light"
+                android:textColor="@color/colorTextLight"
+                tools:ignore="Autofill" />
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/btnSaveChanges"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/bg_rounded_rect_btn_register"
+                android:text="@string/action_save_changes"
+                android:textAppearance="@style/TextAppearance.Dark.Bold"
+                android:textSize="14sp"
+                app:spinning_bar_color="@color/colorPrimary"
+                app:spinning_bar_width="2dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="@string/title_other"
+                android:textAppearance="@style/TextAppearance.Light.Bold"
+                android:textSize="14sp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:background="@color/colorDarkGrey" />
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/btnUnsubscribe"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/bg_rounded_rect_btn_register"
+                android:text="@string/action_unsubscribe"
+                android:textAppearance="@style/TextAppearance.Dark.Bold"
+                android:textSize="14sp"
+                app:spinning_bar_color="@color/colorPrimary"
+                app:spinning_bar_width="2dp" />
+
+            <br.com.simplepass.loading_button_lib.customViews.CircularProgressButton
+                android:id="@+id/btnLogout"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="32dp"
+                android:background="@drawable/bg_rounded_rect_btn_register"
+                android:text="@string/action_logout"
+                android:textAppearance="@style/TextAppearance.Dark.Bold"
+                android:textSize="14sp"
+                app:spinning_bar_color="@color/colorPrimary"
+                app:spinning_bar_width="2dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

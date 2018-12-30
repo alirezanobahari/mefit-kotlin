@@ -9,6 +9,7 @@ import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ToastBuilder
 import ir.softap.mefit.ui.common.decoration.GridSpacingItemDecoration
+import ir.softap.mefit.ui.video.list.VideoListActivity
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
 import ir.softap.mefit.utilities.extensions.toPx
@@ -29,9 +30,8 @@ class CategoryListFragment : DaggerXFragment() {
 
         val categoryAdapter = CategoryAdapter(this@CategoryListFragment,
             { categoryListViewModel.fetchCategoryList() },
-            {
+            { category -> startActivity(VideoListActivity.newIntent(context!!, category.title, category.id)) })
 
-            })
         lstCategory.layoutManager = GridLayoutManager(context, 2)
         lstCategory.addItemDecoration(GridSpacingItemDecoration(2, 8.toPx, false))
         lstCategory.adapter = categoryAdapter

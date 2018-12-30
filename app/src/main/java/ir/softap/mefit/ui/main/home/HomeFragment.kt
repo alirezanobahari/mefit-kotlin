@@ -9,6 +9,8 @@ import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ToastBuilder
 import ir.softap.mefit.ui.common.decoration.EqualSpacingItemDecoration
+import ir.softap.mefit.ui.video.list.VideoListActivity
+import ir.softap.mefit.ui.video.show.VideoShowActivity
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
 import ir.softap.mefit.utilities.extensions.toPx
@@ -27,10 +29,19 @@ class HomeFragment : DaggerXFragment() {
         srlHome.setColorSchemeColors(context!!.colors[R.color.colorPrimary])
         srlHome.setOnRefreshListener { homeViewModel.fetchHome() }
 
-        val homeAdapter = HomeAdapter(this@HomeFragment,
+        val homeAdapter = HomeAdapter(
             retry = { homeViewModel.fetchHome() },
-            homeSelect = {},
-            videoSelect = {})
+            homeSelect = { home ->
+                startActivity(
+                    VideoListActivity.newIntent(
+                        context!!,
+                        title = home.title,
+                        typeId = home.id
+                    )
+                )
+            },
+            videoSelect = { video -> startActivity(VideoShowActivity.newIntent(context!!, video)) }
+        )
         lstHome.layoutManager = LinearLayoutManager(context)
         lstHome.addItemDecoration(EqualSpacingItemDecoration(16.toPx, EqualSpacingItemDecoration.VERTICAL, true))
         lstHome.adapter = homeAdapter

@@ -10,6 +10,7 @@ import kotlinx.android.synthetic.main.item_list_state.view.*
 
 class ListStateItemViewHolder private constructor(
     itemView: View,
+    private val enableLoading: Boolean = false,
     private val enableNothingFound: Boolean = true
 ) : RecyclerView.ViewHolder(itemView) {
 
@@ -17,6 +18,7 @@ class ListStateItemViewHolder private constructor(
         fun create(
             inflater: LayoutInflater,
             parent: ViewGroup,
+            enableLoading: Boolean = false,
             enableNothingFound: Boolean = true
         ) =
             ListStateItemViewHolder(
@@ -34,7 +36,21 @@ class ListStateItemViewHolder private constructor(
     ) {
         with(itemView) {
             when (listState) {
+                ListState.LOADING -> {
+                    if(enableLoading) {
+                        pbLoading.visibility = View.VISIBLE
+                        imgListState.visibility = View.GONE
+                        tvTitleListState.visibility = View.GONE
+                        with(clListStateContainer) {
+                            isClickable = false
+                            isFocusable = false
+                        }
+                    }
+                }
                 ListState.ERROR -> {
+                    pbLoading.visibility = View.GONE
+                    imgListState.visibility = View.VISIBLE
+                    tvTitleListState.visibility = View.VISIBLE
                     imgListState.setImageResource(R.drawable.ic_reload)
                     tvTitleListState.setText(R.string.action_retry)
                     with(clListStateContainer) {
@@ -45,6 +61,9 @@ class ListStateItemViewHolder private constructor(
                 }
                 ListState.SUCCESS -> {
                     if (enableNothingFound) {
+                        pbLoading.visibility = View.GONE
+                        imgListState.visibility = View.VISIBLE
+                        tvTitleListState.visibility = View.VISIBLE
                         imgListState.setImageResource(R.drawable.ic_magnifier_not_found)
                         tvTitleListState.setText(nothingFoundTitle)
                         with(clListStateContainer) {

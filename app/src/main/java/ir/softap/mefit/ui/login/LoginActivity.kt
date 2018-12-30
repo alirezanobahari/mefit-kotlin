@@ -23,7 +23,7 @@ import ir.softap.mefit.utilities.d
 import ir.softap.mefit.utilities.e
 import ir.softap.mefit.utilities.extensions.TAG
 import ir.softap.mefit.utilities.extensions.strings
-import ir.softap.mefit.utilities.onApi
+import ir.softap.mefit.utilities.onApiAndAbove
 import kotlinx.android.synthetic.main.activity_login.*
 
 class LoginActivity : DaggerXFragmentActivity() {
@@ -44,7 +44,7 @@ class LoginActivity : DaggerXFragmentActivity() {
 
     override val initViews: (Bundle?) -> Unit = {
 
-        onApi(23) {
+        onApiAndAbove(23) {
             if (ContextCompat.checkSelfPermission(
                     this,
                     Manifest.permission.READ_SMS

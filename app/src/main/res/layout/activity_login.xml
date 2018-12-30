@@ -22,7 +22,7 @@
 
     <EditText
         android:id="@+id/edPhoneNumber"
-        style="@style/FrameEditText"
+        style="@style/FrameEditText.Light"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="32dp"

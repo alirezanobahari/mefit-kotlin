@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:background="@color/colorPrimary">
+
+    <com.makeramen.roundedimageview.RoundedImageView
+        android:id="@+id/imgCategoryFilterPhoto"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:riv_border_color="@color/colorAccent"
+        app:riv_border_width="1dp"
+        app:riv_oval="true" />
+
+    <View
+        android:id="@+id/viewClickOverlay"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="@+id/imgCategoryFilterPhoto"
+        app:layout_constraintEnd_toEndOf="@+id/imgCategoryFilterPhoto"
+        app:layout_constraintStart_toStartOf="@+id/imgCategoryFilterPhoto"
+        app:layout_constraintTop_toTopOf="@+id/imgCategoryFilterPhoto" />
+
+    <TextView
+        android:id="@+id/tvCategoryFilterTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="marquee"
+        android:gravity="center"
+        android:singleLine="true"
+        android:textAppearance="@style/TextAppearance.Light.Light"
+        android:textColor="@color/colorTextLight"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgCategoryFilterPhoto"
+        tools:text="@tools:sample/first_names" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

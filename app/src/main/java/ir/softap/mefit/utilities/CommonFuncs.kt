@@ -36,9 +36,17 @@ inline fun belowLollipop(body: () -> Unit) {
 }
 
 /**
- * run [body] if [Build.VERSION.SDK_INT] is equal or grater than [apiLevel]
+ * run [body] if [Build.VERSION.SDK_INT] is equal to [apiLevel]
  */
 inline fun onApi(apiLevel: Int, body: () -> Unit) {
+    if (Build.VERSION.SDK_INT == apiLevel)
+        body()
+}
+
+/**
+ * run [body] if [Build.VERSION.SDK_INT] is equal or grater than [apiLevel]
+ */
+inline fun onApiAndAbove(apiLevel: Int, body: () -> Unit) {
     if (Build.VERSION.SDK_INT >= apiLevel)
         body()
 }
