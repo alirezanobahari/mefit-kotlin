@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.etiennelenhart.eiffel.state.peek
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
@@ -55,13 +56,14 @@ class HomeFragment : DaggerXFragment() {
                 submitList(homeViewState.homeList)
             }
 
-            homeViewState.homeViewEvent?.apply {
-                if (!handled) {
-                    when (this) {
-                        is HomeViewEvent.ErrorViewEvent -> ToastBuilder.showError(
+            homeViewState.homeViewEvent?.peek { homeViewEvent ->
+                when (homeViewEvent) {
+                    is HomeViewEvent.ErrorViewEvent -> {
+                        ToastBuilder.showError(
                             context!!,
-                            context!!.strings[this.message]
+                            context!!.strings[homeViewEvent.message]
                         )
+                        true
                     }
                 }
             }

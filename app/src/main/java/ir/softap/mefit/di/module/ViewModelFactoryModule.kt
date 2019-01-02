@@ -7,10 +7,12 @@ import dagger.Module
 import dagger.multibindings.IntoMap
 import ir.softap.mefit.di.DaggerViewModelFactory
 import ir.softap.mefit.di.ViewModelKey
+import ir.softap.mefit.ui.intro.IntroViewModel
 import ir.softap.mefit.ui.login.LoginViewModel
 import ir.softap.mefit.ui.main.MainViewModel
 import ir.softap.mefit.ui.main.category.CategoryListViewModel
 import ir.softap.mefit.ui.main.home.HomeViewModel
+import ir.softap.mefit.ui.main.profile.ProfileViewModel
 import ir.softap.mefit.ui.main.search.SearchViewModel
 import ir.softap.mefit.ui.splash.SplashViewModel
 import ir.softap.mefit.ui.video.list.VideoListViewModel
@@ -28,6 +30,11 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(SplashViewModel::class)
     internal abstract fun bindSplashViewModel(view: SplashViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(IntroViewModel::class)
+    internal abstract fun bindIntroViewModel(view: IntroViewModel): ViewModel
 
     @Binds
     @IntoMap
@@ -53,6 +60,11 @@ abstract class ViewModelFactoryModule {
     @IntoMap
     @ViewModelKey(SearchViewModel::class)
     internal abstract fun bindSearchViewModel(view: SearchViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel::class)
+    internal abstract fun bindProfileViewModel(view: ProfileViewModel): ViewModel
 
     @Binds
     @IntoMap

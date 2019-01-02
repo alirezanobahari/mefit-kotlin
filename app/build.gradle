@@ -121,6 +121,11 @@ dependencies {
     //Apache Common Text
     implementation "org.apache.commons:commons-text:$apache_commons_text_version"
 
+    //ExoPlayer
+    implementation 'com.google.android.exoplayer:exoplayer:2.9.3'
+    implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.3'
+
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'

@@ -8,6 +8,7 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProviders
 import com.android.billingclient.util.IabHelper
 import com.android.billingclient.util.MarketIntentFactorySDK
+import com.etiennelenhart.eiffel.state.peek
 import ir.softap.mefit.R
 import ir.softap.mefit.SessionManager
 import ir.softap.mefit.data.model.Session
@@ -73,35 +74,39 @@ class LoginActivity : DaggerXFragmentActivity() {
             edPhoneNumber.isEnabled = !loading
             if (loading) btnEnter.startAnimation() else btnEnter.revertAnimation()
 
-            loginViewState.loginViewEvent?.apply {
-                if (!handled) {
-                    when (this) {
-                        is LoginViewEvent.ValidationStateEvent -> {
-                            when (this.validationState) {
-                                LoginViewModel.ValidationState.EMPTY_PHONE_NUMBER -> edPhoneNumber.error =
-                                        strings[R.string.validation_empty_phone_number]
-                                LoginViewModel.ValidationState.INVALID_PHONE_NUMBER -> edPhoneNumber.error =
-                                        strings[R.string.validation_wrong_phone_number]
-                            }
+            loginViewState.loginViewEvent?.peek { loginViewEvent ->
+                when (loginViewEvent) {
+                    is LoginViewEvent.ValidationStateEvent -> {
+                        when (loginViewEvent.validationState) {
+                            LoginViewModel.ValidationState.EMPTY_PHONE_NUMBER -> edPhoneNumber.error =
+                                    strings[R.string.validation_empty_phone_number]
+                            LoginViewModel.ValidationState.INVALID_PHONE_NUMBER -> edPhoneNumber.error =
+                                    strings[R.string.validation_wrong_phone_number]
+                            LoginViewModel.ValidationState.OK -> d { "${TAG()}, validation ok!" }
                         }
-                        is LoginViewEvent.ShowEnterPinDialog -> {
-                            enterPidDialog = EnterPidDialog.newInstance(this.tid).apply {
-                                show(supportFragmentManager, "enterPidDialog")
-                            }
+                        true
+                    }
+                    is LoginViewEvent.ShowEnterPinDialog -> {
+                        enterPidDialog = EnterPidDialog.newInstance(loginViewEvent.tid).apply {
+                            show(supportFragmentManager, "enterPidDialog")
                         }
-                        is LoginViewEvent.IrancellPurchaseEvent -> {
-                            checkIrancellPremium()
+                        true
+                    }
+                    is LoginViewEvent.IrancellPurchaseEvent -> {
+                        checkIrancellPremium()
+                        true
+                    }
+                    is LoginViewEvent.LoginSuccessEvent -> {
+                        LocalStorage.with(this@LoginActivity)
+                            .save(Session::class.java.name, SessionManager.session!!)
+                        startActivity(Intent(this@LoginActivity, MainActivity::class.java)).also {
+                            finish()
                         }
-                        is LoginViewEvent.LoginSuccessEvent -> {
-                            LocalStorage.with(this@LoginActivity)
-                                .save(Session::class.java.name, SessionManager.session!!)
-                            startActivity(Intent(this@LoginActivity, MainActivity::class.java)).also {
-                                finish()
-                            }
-                        }
-                        is LoginViewEvent.ErrorViewEvent -> {
-                            ToastBuilder.showError(this@LoginActivity, strings[this.errorMessage])
-                        }
+                        true
+                    }
+                    is LoginViewEvent.ErrorViewEvent -> {
+                        ToastBuilder.showError(this@LoginActivity, strings[loginViewEvent.errorMessage])
+                        true
                     }
                 }
             }

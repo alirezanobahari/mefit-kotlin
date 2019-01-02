@@ -2,16 +2,14 @@ package ir.softap.mefit.ui.video.show
 
 import android.content.Context
 import android.content.Intent
-import android.content.pm.ActivityInfo
 import android.os.Bundle
-import android.view.WindowManager
+import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProviders
 import ir.softap.mefit.R
 import ir.softap.mefit.data.model.Video
 import ir.softap.mefit.ui.abstraction.DaggerXFragmentActivity
 import ir.softap.mefit.utilities.extensions.addFragment
-import ir.softap.mefit.utilities.onApi
-import ir.softap.mefit.utilities.onApiAndAbove
+import kotlinx.android.synthetic.main.activity_video_show.*
 
 class VideoShowActivity : DaggerXFragmentActivity() {
 
@@ -45,6 +43,13 @@ class VideoShowActivity : DaggerXFragmentActivity() {
 
         videoShowViewModel.observeState(this) { videoShowState ->
             if (videoShowState.fullscreen) {
+                flVideoPlayerFragmentContainer.rotation = 90.toFloat()
+                with(flVideoPlayerFragmentContainer.layoutParams) {
+                    height = LinearLayout.LayoutParams.MATCH_PARENT
+                    width = LinearLayout.LayoutParams.MATCH_PARENT
+                }
+            }
+            /*if (videoShowState.fullscreen) {
                 onApiAndAbove(18) {
                     requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_USER_LANDSCAPE
                 }
@@ -58,7 +63,7 @@ class VideoShowActivity : DaggerXFragmentActivity() {
             } else {
                 requestedOrientation = ActivityInfo.SCREEN_ORIENTATION_PORTRAIT
                 window.clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-            }
+            }*/
         }
     }
 

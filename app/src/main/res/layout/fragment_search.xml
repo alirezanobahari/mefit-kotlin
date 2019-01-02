@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:orientation="vertical"
-    tools:background="@color/colorAccent">
+    android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/clToolbar"
@@ -21,16 +20,19 @@
 
         <EditText
             android:id="@+id/edSearch"
-            style="@style/FrameEditText.Dark"
+            style="@style/FrameEditText.Light"
             android:layout_width="0dp"
             android:layout_height="40dp"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="16dp"
+            android:background="@drawable/selector_search_edit_text"
             android:hint="@string/hint_search"
+            android:imeOptions="actionSearch"
             android:inputType="text"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
             android:textAppearance="@style/TextAppearance.Dark"
+            android:textColor="@color/colorTextLight"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnFilter"
@@ -39,7 +41,7 @@
 
         <ImageButton
             android:id="@+id/btnSearch"
-            style="@style/SquareImageButton.Dark"
+            style="@style/SquareImageButton.Light"
             android:layout_marginStart="8dp"
             android:scrollbarSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/edSearch"
@@ -56,6 +58,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/edSearch"
             app:srcCompat="@drawable/ic_filter"
+            android:visibility="gone"
             tools:ignore="ContentDescription" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -73,6 +76,10 @@
             android:id="@+id/lstSearch"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingEnd="0dp"
+            android:paddingTop="8dp"
             tools:layoutManager="GridLayoutManager"
             tools:listitem="@layout/item_grid_video"
             tools:spanCount="2" />

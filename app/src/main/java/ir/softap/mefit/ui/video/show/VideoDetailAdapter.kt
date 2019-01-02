@@ -100,7 +100,10 @@ class VideoDetailAdapter(
         else VIEW_TYPE_COMMENT
 
     override fun onViewRecycled(holder: RecyclerView.ViewHolder) {
-        if (holder is CommentViewHolder) holder.onRecycled()
+        when (holder) {
+            is VideoDetailViewHolder -> holder.onRecycled()
+            is CommentViewHolder -> holder.onRecycled()
+        }
         super.onViewRecycled(holder)
     }
 
@@ -127,14 +130,15 @@ class VideoDetailAdapter(
                     btnComments.setOnClickListener { scrollToComment() }
 
                     with(lstTag) {
-                        layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                        addItemDecoration(
-                            EqualSpacingItemDecoration(
-                                2.toPx,
-                                EqualSpacingItemDecoration.HORIZONTAL,
-                                true
+                        layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, true)
+                        if (itemDecorationCount == 0)
+                            addItemDecoration(
+                                EqualSpacingItemDecoration(
+                                    2.toPx,
+                                    EqualSpacingItemDecoration.HORIZONTAL,
+                                    true
+                                )
                             )
-                        )
                         adapter = TagAdapter(tagSelect).also { it.submitList(videoDetail?.first?.tags) }
                     }
                     with(descriptionView) {
@@ -143,15 +147,39 @@ class VideoDetailAdapter(
                     }
                     with(lstSuggestedVideo) {
                         layoutManager = LinearLayoutManager(context, RecyclerView.HORIZONTAL, false)
-                        addItemDecoration(
-                            EqualSpacingItemDecoration(
-                                8.toPx,
-                                EqualSpacingItemDecoration.HORIZONTAL,
-                                true
+                        if (itemDecorationCount == 0)
+                            addItemDecoration(
+                                EqualSpacingItemDecoration(
+                                    8.toPx,
+                                    EqualSpacingItemDecoration.HORIZONTAL,
+                                    true
+                                )
                             )
-                        )
                         adapter = LinearVideoAdapter(videoSelect).also { it.submitList(videoDetail!!.third) }
                     }
+                }
+            }
+        }
+
+        fun onRecycled() {
+            with(itemView) {
+                tvCommentCount.text = ""
+                tvLikeCount.text = ""
+                cbLike.isChecked = false
+                tvVideoTitle.text = ""
+                tvIssuerName.text = ""
+                tvIssuerName.setOnClickListener(null)
+                btnComments.setOnClickListener(null)
+                descriptionView.removeAllViews()
+                with(lstTag) {
+                    layoutManager = null
+                    removeItemDecorationAt(0)
+                    adapter = null
+                }
+                with(lstSuggestedVideo) {
+                    layoutManager = null
+                    removeItemDecorationAt(0)
+                    adapter = null
                 }
             }
         }

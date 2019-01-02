@@ -5,11 +5,13 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.etiennelenhart.eiffel.state.peek
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXActivity
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ToastBuilder
 import ir.softap.mefit.ui.main.search.VideoListAdapter
+import ir.softap.mefit.ui.main.search.VideoListAdapter.Companion.VIEW_TYPE_STATE
 import ir.softap.mefit.ui.video.show.VideoShowActivity
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
@@ -84,7 +86,13 @@ class VideoListActivity : DaggerXActivity() {
             { video -> startActivity(VideoShowActivity.newIntent(this, video)) }
         )
         with(lstVideo) {
-            layoutManager = GridLayoutManager(this@VideoListActivity, 2)
+            layoutManager = GridLayoutManager(this@VideoListActivity, 2).apply {
+                spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                    override fun getSpanSize(position: Int): Int =
+                        if (videoPageListAdapter.getItemViewType(position) == VIEW_TYPE_STATE) spanCount
+                        else 1
+                }
+            }
             adapter = videoPageListAdapter
         }
 
@@ -94,10 +102,11 @@ class VideoListActivity : DaggerXActivity() {
 
             videoPageListAdapter.submitList(videoListViewState.videos)
 
-            if (videoListViewState.videoListViewEvent?.handled == false) {
-                when (videoListViewState.videoListViewEvent) {
+            videoListViewState.videoListViewEvent?.peek { videoListViewEvent ->
+                when (videoListViewEvent) {
                     is VideoListViewEvent.ErrorViewEvent -> {
-                        ToastBuilder.showError(this, strings[videoListViewState.videoListViewEvent.errorMessage])
+                        ToastBuilder.showError(this, strings[videoListViewEvent.errorMessage])
+                        true
                     }
                 }
             }

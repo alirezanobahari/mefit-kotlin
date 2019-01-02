@@ -38,6 +38,10 @@
             android:id="@+id/lstCategory"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:paddingTop="8dp"
+            android:paddingStart="8dp"
+            android:clipToPadding="false"
+            android:paddingEnd="0dp"
             tools:layoutManager="GridLayoutManager"
             tools:listitem="@layout/item_category"
             tools:spanCount="2" />

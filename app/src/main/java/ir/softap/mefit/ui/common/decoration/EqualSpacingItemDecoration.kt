@@ -59,31 +59,13 @@ class EqualSpacingItemDecoration @JvmOverloads constructor(
                 }
             }
             GRID -> if (layoutManager is GridLayoutManager) {
-                val gridLayoutManager = layoutManager as GridLayoutManager?
-                val cols = gridLayoutManager!!.spanCount
-                val col = position % cols
+                val cols = layoutManager.spanCount
                 val rows = itemCount / cols
 
-              /*  if (includeEdges) {
-                    outRect.left = spacing - col * spacing / cols // spacing - column * ((1f / spanCount) * spacing)
-                    outRect.right = spacing - col * spacing / cols
-                    if (position < cols) { // top edge
-                        outRect.top = spacing
-                    }
-                    outRect.bottom = spacing // item bottom
-                } else {
-                    outRect.left = col * spacing / cols // column * ((1f / spanCount) * spacing)
-                    outRect.right = spacing - (col + 1) * spacing /
-                            cols // spacing - (column + 1) * ((1f /    spanCount) * spacing)
-                    if (position >= cols) {
-                        outRect.top = spacing // item top
-                    }
-                }
-*/
-                 outRect.left = spacing
-                 outRect.right = if (position % cols == cols - 1) spacing else 0
-                 outRect.top = spacing
-                 outRect.bottom = if (position / cols == rows - 1) spacing else 0
+                outRect.left = spacing
+                outRect.right = if (position % cols == cols - 1) spacing else 0
+                outRect.top = spacing
+                outRect.bottom = if (position / cols == rows - 1) spacing else 0
             }
         }
     }

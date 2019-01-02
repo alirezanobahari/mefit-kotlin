@@ -3,6 +3,7 @@ package ir.softap.mefit.di.module
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 import ir.softap.mefit.di.scope.ActivityScope
+import ir.softap.mefit.ui.intro.IntroActivity
 import ir.softap.mefit.ui.login.LoginActivity
 import ir.softap.mefit.ui.main.MainActivity
 import ir.softap.mefit.ui.splash.SplashActivity
@@ -25,6 +26,13 @@ abstract class ActivityBindingModule {
     @ActivityScope
     @ContributesAndroidInjector
     abstract fun bindSplashActivity(): SplashActivity
+
+    /**
+     * [IntroActivity] binder
+     */
+    @ActivityScope
+    @ContributesAndroidInjector
+    abstract fun bindIntroActivity(): IntroActivity
 
     /**
      * [LoginActivity] binder

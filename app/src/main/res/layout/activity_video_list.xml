@@ -58,7 +58,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/lstVideo"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="0dp" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 

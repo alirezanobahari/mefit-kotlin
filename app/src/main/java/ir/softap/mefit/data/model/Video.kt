@@ -61,7 +61,7 @@ data class Video(
 
     @Parcelize
     data class Issuer(
-        val id: String,
+        val id: Int,
         @SerializedName("first_name") val firstName: String?,
         @SerializedName("last_name") val lastName: String?
     ) : Parcelable

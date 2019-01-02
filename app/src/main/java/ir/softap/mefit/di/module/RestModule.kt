@@ -2,10 +2,7 @@ package ir.softap.mefit.di.module
 
 import dagger.Module
 import dagger.Provides
-import ir.softap.mefit.data.repository.source.CategoryApi
-import ir.softap.mefit.data.repository.source.RpgApi
-import ir.softap.mefit.data.repository.source.UserApi
-import ir.softap.mefit.data.repository.source.VideoApi
+import ir.softap.mefit.data.repository.source.*
 import ir.softap.mefit.di.scope.ApplicationScope
 import retrofit2.Retrofit
 
@@ -21,6 +18,17 @@ class RestModule {
     @Provides
     fun provideRpgApi(retrofit: Retrofit): RpgApi {
         return retrofit.create(RpgApi::class.java)
+    }
+
+    /**
+     * Provides the JhoobinApi service implementation.
+     * @param retrofit the Retrofit object used to instantiate the service
+     * @return the JhoobinApi service implementation.
+     */
+    @ApplicationScope
+    @Provides
+    fun provideJhoobinApi(retrofit: Retrofit): JhoobinApi {
+        return retrofit.create(JhoobinApi::class.java)
     }
 
     /**

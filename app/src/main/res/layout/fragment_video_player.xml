@@ -8,71 +8,13 @@
     android:layoutDirection="rtl"
     tools:context=".ui.video.show.VideoShowActivity">
 
-    <VideoView
-        android:id="@+id/videoView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+        android:id="@+id/exoPlayer"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnBack"
-        style="@style/SquareImageButton.Light"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:alpha="0.8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_chevron_back"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/tvVideoTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="16dp"
-        android:alpha="0.8"
-        android:ellipsize="marquee"
-        android:singleLine="true"
-        android:textAppearance="@style/TextAppearance.Light"
-        android:textDirection="rtl"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/btnBack"
-        app:layout_constraintEnd_toStartOf="@+id/btnBack"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnBack" />
-
-    <ProgressBar
-        android:id="@+id/pbLoading"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:indeterminateTint="@color/colorAccent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="UnusedAttribute" />
-
-    <CheckBox
-        android:id="@+id/cbFullscreen"
-        style="@style/FullscreenCheckBox"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageButton
-        android:id="@+id/btnVideoQuality"
-        style="@style/SquareImageButton.Light"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_hd" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

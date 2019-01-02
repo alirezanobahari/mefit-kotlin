@@ -21,6 +21,11 @@
     <string name="format_date_hour">%s ساعت پیش</string>
     <string name="format_date_minute">%s دقیقه پیش</string>
 
+    <!--IntroActivity-->
+    <string name="action_next">بعدی</string>
+    <string name="action_prev">قبلی</string>
+    <string name="action_start">شروع</string>
+
     <!--LoginActivity-->
     <string name="hint_phone_number">شماره موبایل (مثال : 09123456789)</string>
 
@@ -74,6 +79,9 @@
 
     <string name="msg_want_to_logout">آیا مایل به خروج از حساب کاربری خود می‌باشید؟</string>
     <string name="msg_want_to_unsubscribe">آیا مایل به لغو اشتراک خود می‌باشید؟</string>
+    <string name="msg_profile_edited_successfully">پروفایل کاربری با موفقیت بروزرسانی شد.</string>
+
+    <string name="error_edit_profile">خطا در ذخیره اطلاعات کاربری</string>
 
     <string name="action_save_changes">ذخیره</string>
     <string name="action_logout">خروج</string>

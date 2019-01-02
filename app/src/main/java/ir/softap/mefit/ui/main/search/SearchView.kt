@@ -77,6 +77,8 @@ class SearchViewModel @Inject constructor(
     }
 
     fun filter() {
+        if (state.value?.query?.isEmpty() == true)
+            return
         compositeDisposable.add(filterVideoUseCase.execute(
             FilterVideoQuery(
                 query = state.value?.query,

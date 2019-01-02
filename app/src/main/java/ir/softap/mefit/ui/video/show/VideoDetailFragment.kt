@@ -5,12 +5,16 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.etiennelenhart.eiffel.state.peek
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.support.HasSupportFragmentInjector
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
+import ir.softap.mefit.ui.common.ToastBuilder
+import ir.softap.mefit.ui.video.list.VideoListActivity
+import ir.softap.mefit.utilities.extensions.strings
 import kotlinx.android.synthetic.main.fragment_video_detail.*
 import javax.inject.Inject
 
@@ -29,11 +33,27 @@ class VideoDetailFragment : DaggerXFragment(), HasSupportFragmentInjector {
 
         val videoDetailAdapter = VideoDetailAdapter(
             retry = { videoShowViewModel.retry() },
-            videoSelect = { video -> },
+            videoSelect = { video -> startActivity(VideoShowActivity.newIntent(context!!, video)) },
             like = { video -> videoShowViewModel.like(video.id) },
-            issuerSelect = { issuer -> },
-            tagSelect = { tag -> },
-            scrollToComment = {},
+            issuerSelect = { issuer ->
+                startActivity(
+                    VideoListActivity.newIntent(
+                        context!!,
+                        title = "${issuer.firstName ?: ""} ${issuer.lastName ?: ""}",
+                        issuerId = issuer.id
+                    )
+                )
+            },
+            tagSelect = { tag ->
+                startActivity(
+                    VideoListActivity.newIntent(
+                        context!!,
+                        title = tag.title,
+                        tagId = tag.id
+                    )
+                )
+            },
+            scrollToComment = { lstVideoDetail.smoothScrollToPosition(1) },
             addComment = {
                 CommentDialog()
                     .show(childFragmentManager, "commentDialog")
@@ -53,6 +73,16 @@ class VideoDetailFragment : DaggerXFragment(), HasSupportFragmentInjector {
                     videoDetail =
                             Triple(videoShowState.video!!, videoShowState.videoDetail!!, videoShowState.suggestedVideos)
                     submitData(videoShowState.comments.toMutableList())
+                }
+            }
+
+            videoShowState.videoShowEvent?.peek { videoShowEvent ->
+                when (videoShowEvent) {
+                    is VideoShowEvent.ErrorViewEvent -> {
+                        ToastBuilder.showError(context!!, context!!.strings[videoShowEvent.message])
+                        true
+                    }
+                    else -> false
                 }
             }
         }

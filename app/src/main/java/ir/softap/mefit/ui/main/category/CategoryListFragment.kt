@@ -4,15 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
+import com.etiennelenhart.eiffel.state.peek
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
 import ir.softap.mefit.ui.common.ListState
 import ir.softap.mefit.ui.common.ToastBuilder
-import ir.softap.mefit.ui.common.decoration.GridSpacingItemDecoration
+import ir.softap.mefit.ui.main.category.CategoryAdapter.Companion.VIEW_TYPE_STATE
 import ir.softap.mefit.ui.video.list.VideoListActivity
 import ir.softap.mefit.utilities.extensions.colors
 import ir.softap.mefit.utilities.extensions.strings
-import ir.softap.mefit.utilities.extensions.toPx
 import kotlinx.android.synthetic.main.fragment_category_list.*
 
 class CategoryListFragment : DaggerXFragment() {
@@ -32,8 +32,13 @@ class CategoryListFragment : DaggerXFragment() {
             { categoryListViewModel.fetchCategoryList() },
             { category -> startActivity(VideoListActivity.newIntent(context!!, category.title, category.id)) })
 
-        lstCategory.layoutManager = GridLayoutManager(context, 2)
-        lstCategory.addItemDecoration(GridSpacingItemDecoration(2, 8.toPx, false))
+        lstCategory.layoutManager = GridLayoutManager(context, 2).apply {
+            spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+                override fun getSpanSize(position: Int): Int =
+                    if (categoryAdapter.getItemViewType(position) == VIEW_TYPE_STATE) spanCount
+                    else 1
+            }
+        }
         lstCategory.adapter = categoryAdapter
 
         categoryListViewModel.observeState(this@CategoryListFragment) { categoryListViewModel ->
@@ -45,13 +50,14 @@ class CategoryListFragment : DaggerXFragment() {
                 submitList(categoryListViewModel.categoryList)
             }
 
-            categoryListViewModel.categoryListViewEvent?.apply {
-                if (!handled) {
-                    when (this) {
-                        is CategoryListViewEvent.ErrorViewEvent -> ToastBuilder.showError(
+            categoryListViewModel.categoryListViewEvent?.peek { categoryListViewEvent ->
+                when (categoryListViewEvent) {
+                    is CategoryListViewEvent.ErrorViewEvent -> {
+                        ToastBuilder.showError(
                             context!!,
-                            context!!.strings[this.message]
+                            context!!.strings[categoryListViewEvent.message]
                         )
+                        true
                     }
                 }
             }

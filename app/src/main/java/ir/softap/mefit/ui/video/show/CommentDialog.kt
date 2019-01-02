@@ -13,9 +13,7 @@ import kotlinx.android.synthetic.main.dialog_comment.*
 
 class CommentDialog : DaggerXBottomPopupDialogFragment() {
 
-    override fun getTheme(): Int {
-        return R.style.AppDialog_Fullscreen
-    }
+    override fun getTheme(): Int = R.style.AppDialog_Fullscreen
 
     private val videoShowViewModel: VideoShowViewModel by lazy {
         ViewModelProviders.of(activity!!, viewModelFactory)[VideoShowViewModel::class.java]
