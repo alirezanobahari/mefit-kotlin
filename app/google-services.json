@@ -1,0 +1,121 @@
+{
+  "project_info": {
+    "project_number": "911966638355",
+    "firebase_url": "https://mefit-5ec80.firebaseio.com",
+    "project_id": "mefit-5ec80",
+    "storage_bucket": "mefit-5ec80.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911966638355:android:4300a8947074dcca",
+        "android_client_info": {
+          "package_name": "ir.softap.masjednama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911966638355-rg8lp8kgoh60nlpfpcs3l6bg06o55ggh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.softap.masjednama",
+            "certificate_hash": "79f7841bf054d330af3ded9aa6b8447300a7dfb4"
+          }
+        },
+        {
+          "client_id": "911966638355-73hfclqcirgikoilhpcjg5flb708a6lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGwhwjucz6fL0JKN0vnpfPLIEysZnclHQ"
+        },
+        {
+          "current_key": "AIzaSyAbjcD-zokhvcBGlph3IaW2rnBEY5PGKsU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911966638355-73hfclqcirgikoilhpcjg5flb708a6lq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911966638355:android:c8715e4f815633ee",
+        "android_client_info": {
+          "package_name": "ir.softap.mefit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911966638355-3bsnh07vf9mbkj94s3e6sme7pneeng9k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.softap.mefit",
+            "certificate_hash": "79f7841bf054d330af3ded9aa6b8447300a7dfb4"
+          }
+        },
+        {
+          "client_id": "911966638355-saqssgjcg3emjg4hl1jarhl44s2pa961.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.softap.mefit",
+            "certificate_hash": "7516e9ff4dda21c9aba65a1e76a506cde1eb1a21"
+          }
+        },
+        {
+          "client_id": "911966638355-6ri4pu6b5k5cpcedm0c4gj5mbba7qsd7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ir.softap.mefit",
+            "certificate_hash": "56da839e5b9d379b093d88e44ed04e7239094233"
+          }
+        },
+        {
+          "client_id": "911966638355-73hfclqcirgikoilhpcjg5flb708a6lq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDGwhwjucz6fL0JKN0vnpfPLIEysZnclHQ"
+        },
+        {
+          "current_key": "AIzaSyAbjcD-zokhvcBGlph3IaW2rnBEY5PGKsU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911966638355-73hfclqcirgikoilhpcjg5flb708a6lq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

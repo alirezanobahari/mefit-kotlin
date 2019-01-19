@@ -3,10 +3,13 @@ package ir.softap.mefit
 import android.app.Activity
 import android.app.Application
 import android.content.res.Configuration
+import com.crashlytics.android.answers.Answers
 import com.facebook.stetho.Stetho
+import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasActivityInjector
+import io.fabric.sdk.android.Fabric
 import ir.softap.mefit.di.DaggerAppComponent
 import ir.softap.mefit.ui.common.core.LocaleManager
 import ir.softap.mefit.utilities.extensions.stringArrays
@@ -20,6 +23,8 @@ class Mefit : Application(), HasActivityInjector {
 
     override fun onCreate() {
         super.onCreate()
+        Fabric.with(this, Answers())
+        FirebaseAnalytics.getInstance(this)
         initInAppPurchaseSdk()
         initLocaleChanger()
         initDagger()
