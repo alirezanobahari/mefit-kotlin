@@ -72,24 +72,6 @@
             android:textSize="14sp"
             android:textStyle="bold" />
 
-        <FrameLayout
-            android:id="@+id/btnExoFullscreen"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:visibility="gone"
-            android:layout_gravity="right">
-
-            <ImageView
-                android:id="@+id/exo_fullscreen_icon"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_gravity="center"
-                android:adjustViewBounds="true"
-                android:scaleType="fitCenter"
-                app:srcCompat="@drawable/ic_fullscreen" />
-
-        </FrameLayout>
-
     </LinearLayout>
 
 </LinearLayout>

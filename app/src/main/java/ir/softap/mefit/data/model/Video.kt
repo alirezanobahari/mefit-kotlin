@@ -22,7 +22,7 @@ data class Video(
 
     @Parcelize
     data class VideoDetail(
-        val url: Url,
+        val url: String,
         @SerializedName("comments_count") val commentsCount: Int,
         @SerializedName("desc") val descriptions: List<Description>?,
         val category: Category,
@@ -30,12 +30,6 @@ data class Video(
         val rate: Rate,
         @SerializedName("premium_desc") val premiumDescription: PremiumDescription?
     ) : Parcelable {
-
-        @Parcelize
-        data class Url(
-            @SerializedName("url_480") val url480: String?,
-            @SerializedName("url_720") val url720: String?
-        ) : Parcelable
 
         @Parcelize
         data class Description(

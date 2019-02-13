@@ -14,9 +14,9 @@
                         <option name="values">
                           <map>
                             <entry key="assetSourceType" value="FILE" />
-                            <entry key="outputName" value="ic_minimize" />
+                            <entry key="outputName" value="ic_check_mark" />
                             <entry key="overrideSize" value="true" />
-                            <entry key="sourceFile" value="$USER_HOME$/Downloads/focus.svg" />
+                            <entry key="sourceFile" value="$USER_HOME$/Downloads/tick.svg" />
                           </map>
                         </option>
                       </PersistentState>
