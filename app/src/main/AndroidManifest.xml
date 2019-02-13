@@ -21,6 +21,10 @@
         android:theme="@style/AppTheme"
         tools:ignore="AllowBackup,GoogleAppIndexingWarning">
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="add5150e8f35241637bb83c61d9f39f9547b4c58" />
+
         <activity
             android:name=".ui.splash.SplashActivity"
             android:screenOrientation="portrait"
