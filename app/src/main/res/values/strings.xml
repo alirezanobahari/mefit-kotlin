@@ -87,6 +87,9 @@
     <string name="action_logout">خروج</string>
     <string name="action_unsubscribe">لغو اشتراک</string>
 
+    <!--VideoPlayerFragment-->
+    <string name="error_no_video_found">ویدیو‌ای پیدا نشد!</string>
+
     <!--VideoDetailFragment-->
     <string name="title_issuer">مدرس :</string>
     <string name="title_suggested_videos">ویدیو‌های مرتبط</string>

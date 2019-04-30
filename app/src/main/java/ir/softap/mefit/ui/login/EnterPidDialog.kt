@@ -8,6 +8,8 @@ import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProviders
 import ir.softap.mefit.R
+import ir.softap.mefit.R.id.btnSubmit
+import ir.softap.mefit.R.id.edPid
 import ir.softap.mefit.receiver.SmsBroadcastReceiver
 import ir.softap.mefit.ui.abstraction.dialogfragment.DaggerXDialogFragment
 import ir.softap.mefit.ui.common.UIState

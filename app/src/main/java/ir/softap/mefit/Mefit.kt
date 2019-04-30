@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.Application
 import android.content.res.Configuration
 import com.crashlytics.android.answers.Answers
-import com.facebook.stetho.Stetho
 import com.google.firebase.analytics.FirebaseAnalytics
 import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
@@ -54,7 +53,7 @@ class Mefit : Application(), HasActivityInjector {
         .inject(this)
 
     private fun initStetho() {
-        Stetho.initializeWithDefaults(this)
+       // Stetho.initializeWithDefaults(this)
     }
 
 }

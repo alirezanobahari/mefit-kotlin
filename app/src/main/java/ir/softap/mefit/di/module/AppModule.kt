@@ -9,8 +9,6 @@ import ir.softap.mefit.data.executor.ThreadExecutor
 import ir.softap.mefit.data.executor.ThreadExecutorImpl
 import ir.softap.mefit.domain.executor.PostExecutionThread
 import ir.softap.mefit.domain.executor.UiThread
-import kotlinx.coroutines.Dispatchers
-import kotlin.coroutines.CoroutineContext
 
 
 @Module
@@ -21,12 +19,6 @@ class AppModule {
     @ApplicationScope
     @Provides
     fun provideApplicationContext(mefit: Mefit): Context = mefit.applicationContext
-
-    @ApplicationScope
-    @Provides
-    internal fun provideCoroutineContext(): CoroutineContext {
-        return Dispatchers.IO
-    }
 
     @ApplicationScope
     @Provides

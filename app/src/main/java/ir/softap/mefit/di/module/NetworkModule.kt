@@ -1,6 +1,5 @@
 package ir.softap.mefit.di.module
 
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.google.gson.LongSerializationPolicy
@@ -11,7 +10,6 @@ import ir.softap.mefit.data.network.BASE_URL
 import ir.softap.mefit.data.network.EnumRetrofitConverterFactory
 import ir.softap.mefit.data.network.HostSelectionInterceptor
 import ir.softap.mefit.di.scope.ApplicationScope
-import ir.softap.mefit.utilities.onDebug
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -57,7 +55,7 @@ class NetworkModule {
     @Provides
     fun provideOkHttpClient(hostSelectionInterceptor: HostSelectionInterceptor): OkHttpClient {
         val okHttpClientBuilder = OkHttpClient.Builder()
-            .apply { onDebug { addNetworkInterceptor(StethoInterceptor()) } }
+           // .apply { onDebug { addNetworkInterceptor(StethoInterceptor()) } }
             .addInterceptor(hostSelectionInterceptor.apply { host = BASE_HOST })
             .readTimeout(60, TimeUnit.SECONDS)
             .connectTimeout(60, TimeUnit.SECONDS)

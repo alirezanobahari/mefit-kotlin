@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.ProgressBar
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.exoplayer2.*
+
 import com.google.android.exoplayer2.extractor.ts.DefaultTsPayloadReaderFactory
 import com.google.android.exoplayer2.source.hls.DefaultHlsExtractorFactory
 import com.google.android.exoplayer2.source.hls.HlsMediaSource
@@ -15,6 +16,7 @@ import com.google.android.exoplayer2.upstream.DefaultBandwidthMeter
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory
 import ir.softap.mefit.R
 import ir.softap.mefit.ui.abstraction.DaggerXFragment
+import ir.softap.mefit.ui.common.ListState
 import kotlinx.android.synthetic.main.fragment_video_player.*
 
 
@@ -72,17 +74,25 @@ class VideoPlayerFragment : DaggerXFragment() {
 
         videoShowViewModel.observeState(this) { videoShowState ->
 
-            if (player?.playWhenReady == false) {
-                videoShowState.videoDetail?.url?.also { url ->
-                    val mediaSource = HlsMediaSource.Factory(dataSourceFactory)
-                        .setExtractorFactory(defaultHlsExtractor)
-                        .createMediaSource(Uri.parse(url))
-                    player?.prepare(mediaSource)
-                    exoPlayer.player = player
-                    player?.playWhenReady = true
+            if(videoShowState.loadVideoDetailState == ListState.SUCCESS) {
+               // if (player?.playWhenReady == false && player?.playbackState != Player.STATE_READY) {
+                    videoShowState.videoDetail?.url?.also { url ->
+                        val mediaSource = HlsMediaSource.Factory(dataSourceFactory)
+                            .setExtractorFactory(defaultHlsExtractor)
+                            .createMediaSource(Uri.parse(url))
+                        player?.prepare(mediaSource)
+                        exoPlayer.player = player
+                        player?.playWhenReady = true
+                    }
+                //}
+                tvErrorNoVideoFound.visibility = if (videoShowState.videoDetail?.url == null)
+                    View.VISIBLE
+                else View.GONE
+
+                if(videoShowState.videoDetail?.url == null) {
+                    exoPlayer.hideController()
                 }
             }
-
         }
     }
 

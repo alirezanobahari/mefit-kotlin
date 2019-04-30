@@ -16,18 +16,18 @@ data class Video(
     val issuer: Issuer,
     val tags: List<Tag>,
     val like: Like,
-    val duration: String,
+    val duration: String?,
     val premium: Boolean
 ) : Parcelable {
 
     @Parcelize
     data class VideoDetail(
-        val url: String,
+        val url: String?,
         @SerializedName("comments_count") val commentsCount: Int,
         @SerializedName("desc") val descriptions: List<Description>?,
         val category: Category,
         val likes: Like,
-        val rate: Rate,
+        val rate: Rate?,
         @SerializedName("premium_desc") val premiumDescription: PremiumDescription?
     ) : Parcelable {
 

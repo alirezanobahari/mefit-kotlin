@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.LinearLayout
 import androidx.lifecycle.ViewModelProviders
 import ir.softap.mefit.R
+import ir.softap.mefit.R.id.flVideoPlayerFragmentContainer
 import ir.softap.mefit.data.model.Video
 import ir.softap.mefit.ui.abstraction.DaggerXFragmentActivity
 import ir.softap.mefit.utilities.extensions.addFragment
